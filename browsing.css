@@ -1,8 +1,17 @@
+
+
 .categories {
     max-width: 1080px;
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .col {
@@ -13,7 +22,7 @@
 }
 
 .col img {
-    width: 30%;
+    width: 100%;
 }
 
 .title {
