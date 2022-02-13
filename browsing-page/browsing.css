@@ -91,14 +91,14 @@ button:hover {
     position: relative;
     width: 60px;
     height: 60px;
-    background: url('cart.png');
+    background: url('assets/cart.png');
     background-repeat: no-repeat;
     background-size: 60px;
     cursor: pointer;
   }
   
   .toggle.active {
-    background: url('close_icon.png');
+    background: url('assets/close_icon.png');
     background-repeat: no-repeat;
     background-size: 60px;
     background-position: center;
