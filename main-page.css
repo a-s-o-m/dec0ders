@@ -1,56 +1,157 @@
 /*            Fonts                */
-@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Yellowtail&family=Raleway:wght@300&display=swap');
 /*          Variables              */
 :root {
   --primary-color:#232327;
   --secondary-color: #e6c2bf;
-}
-/*         Navigation Bar         */
-.nav-bar {
-  height: 80px;
-  background-color: var(--primary-color);
-  display: grid;
-  grid-template-columns: 1700px 212px;
-}
-.font-logo {
-  margin: 10px 30px 0 800px;
-  font-family: 'Yellowtail', cursive;
-  font-size: 3em;
-  font-weight: bold;
-  color: var(--secondary-color);
-}
-.nav-icon {
-  margin: 7px 0 0 100px;
+  --border-color: white;
+  --logo-color: #93385fff;
+  --nav-color: #4f3466ff;
+  --accent-color: #9f6b99ff;
 }
 
-/*         Main Body         */
+
 body {
   padding: 0;
   margin: 0;
 }
-.main-container {
-  width: 1912px;
-  height: 840px;
-  overflow: hidden;
-  background-image: url("main-page-assets/display.jpg");
-  background-size: 1912px 1200px;
-  background-position: 0 -160px; 
+/*         Navigation Bar         */
+.nav-bar {
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  background-color: var(--border-color);
+  display: flex;
+  place-content: space-between;
 }
-.main-column {
-  width: 600px;
-  height: 650px;
-  margin: 85px 0 75px 730px;
-  text-align: center
+.title-container {
+  position: absolute;
+  left: 42%;
 }
-.main-column h1 {
-  color: var(--secondary-color);
-  padding: 100px;
-  font-family: 'Days One', sans-serif;
-  font-size: 3em;
+.font-logo {
+  width: 240.11px;
+  margin: 13px 12px 0 0;
+  font-family: 'Yellowtail', cursive;
+  font-size: 2.5em;
+  font-weight: bold;
+  letter-spacing: .1em;
+  color: var(--logo-color);
 }
-.footer {
+.nav-container {
+  height: 50%;
+  width: 11%;
+  text-align: center;
+}
+#contact {
+  position: absolute;
+  top: 27%;
+  left: 17%;
+}
+#browse {
+  position: absolute;
+  top: 27%;
+  right: 13%
+}
+.nav-title {
+  font-family: 'Raleway', sans-serif;
+  color: var(--nav-color);
+  width: 67%;
   margin: 0;
-  background-color: var(--primary-color);
-  height: 30px;
-  width: 100%; 
+  padding-top: 3%;
+  letter-spacing: .3em;
+  font-size: 1.8em;
 }
+
+a, a:visited {
+  text-decoration: none;
+}
+a:hover .nav-title {
+  color: var(--accent-color);
+}
+/*         Main Body         */
+.main-column { 
+  display: flex;
+  justify-content: space-between;
+}
+.column {
+  background-color: var(--border-color);
+  width: 6%;
+}
+.footer{
+  width: 100%;
+  height: 55px;
+  background-color: var(--border-color);
+}
+
+.carousel-display {
+  position: absolute;
+  top: 80px;
+  bottom: 55px;
+  left: 6%;
+  right: 6%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.arrow{
+  border: solid var(--logo-color);
+  border-radius: 20%;
+  border-width:  0 7px 7px 0;
+  display: inline-block;
+  padding: 12px;
+}
+.arrow:hover{
+  border-color:var(--secondary-color) ;
+}
+.arrow-prev{
+  left: -70px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+}
+.arrow-next{
+  right: -70px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+[id^= "display"] {
+  display: none;
+}
+.main-container {
+  position: absolute;
+  top: 8%;
+  right: 30.5%;
+  width: 40%;
+  height: 40%;
+  border-radius: 1%;
+  background-color: rgb(255, 255, 255, 0.2);
+}
+.display-1 {
+  z-index: 2;
+  opacity: 1;
+  background-image: url("main-page-assets/display2.jpg");
+  background-size: 2300px 1840px;
+  background-position: -300px -150px; 
+}
+.display-2 {
+  background-image: url("main-page-assets/display3.jpg");
+  background-size: 2048px 1365px;
+  background-position: 0 -210px; 
+}
+.display-3 {
+  background-image: url("main-page-assets/display.jpg");
+  background-size: 1700px 1067px;
+  background-position: 0 -5px; 
+}
+*:target ~ .display-1{
+  opacity: 0;
+}
+#d1:target ~ .display-1{
+  opacity: 1;
+}
+#d2:target ~ .display-2, #d3:target ~ .display-3 {
+  z-index: 3;
+  opacity: 1;
+} 

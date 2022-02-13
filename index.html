@@ -10,28 +10,62 @@
   <body>   
     <!-- Navigation Bar -->
     <div class="nav-bar">
+      
+      <div class="nav-container" id="contact">
+        <a href="about-us-page/about-us.html">
+          <h2 class="nav-title">contact</h2>
+        </a>
+      </div>
 
+      <a href="index.html">
       <div class="title-container" style="display:flex;">
         <p class="font-logo">Rent-A-Date</p>
-        <img class="logo" src="main-page-assets/logo.png" height="80px">
+        <img class="logo" src="main-page-assets/logo5.png" height="80px">
       </div>
+      </a>
 
-      <img class="nav-icon" src="main-page-assets/nav-logo.png" height="65px">
-      
-    </div>
-
-    <!-- Body -->
-    <div class="main-container"> 
-
-      <div class="main-column">
-        <h1>How it works:</h1>
+      <div class="nav-container" id="browse">
+        <a href="browsing-page/browsing.html"> 
+          <h2 class="nav-title" >browse</h2>
+        </a>
       </div>
       
-      <div class="footer"></div>
-
     </div>
     
-    <script src="script.js"></script>
+    <!-- Body -->
+    <div class="main-column">
+      <div class="column"></div>
+
+      <div class="carousel"> 
+        <span id="d1"></span>
+        <span id="d2"></span>
+        <span id="d3"></span>
+        
+        <div class="carousel-display display-1">
+          <a href="#d3" class="arrow-prev arrow"></a>
+          <div class="main-container container1"></div>
+          <a href="#d2" class="arrow-next arrow"></a>
+        </div>
+
+        <div class="carousel-display display-2">
+          <a href="#d1" class="arrow-prev arrow"></a>
+          <div class="main-container container1"></div>
+          <a href="#d3" class="arrow-next arrow"></a>
+        </div>
+
+        <div class="carousel-display display-3">
+          <a href="#d2" class="arrow-prev arrow"></a>
+          <div class="main-container container1"></div>
+          <a href="#d1" class="arrow-next arrow"></a>
+        </div>
+
+      </div>
+
+      <div class="column"></div>
+    </div>
+    
+    <div class="footer"></div>
   </body>
   
 </html>
+
