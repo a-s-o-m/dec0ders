@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Browsing Page</title>
+	<link href="browsing.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+        <!---Categories-->
+        <section class = "showcase">
+            <header>
+                <div class = "toggle"></div>
+            </header>
+        
+        
+        <div class = "categories">
+            <h2 class = "title">Featured Partners</h2>
+            <div class = "row">
+                <div class = "col">
+                    <img src = "main-page-assets/man1.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class = "col">  
+                    <img src = "main-page-assets/women1.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div> 
+                <div class = "col">
+                    <img src = "main-page-assets/man2.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class = "col">
+                    <img src = "main-page-assets/women2.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class = "col">
+                    <img src = "main-page-assets/men3.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class = "col">
+                    <img src = "main-page-assets/women3.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class = "col">
+                    <img src = "main-page-assets/man4.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class = "col">
+                    <img src = "main-page-assets/woman4.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class = "col">
+                    <img src = "main-page-assets/men5.jpg">
+                    <h4>Name</h4>
+                    <p>description</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        </section>
+        <div class = "cart"></div>
+
+        <script src="script.js"></script>
+        <script>
+            const menuToggle = document.querySelector('.toggle')
+            const showcase = document.querySelector('.showcase') 
+        
+              menuToggle.addEventListener('click', () => {
+              menuToggle.classList.toggle('active')
+              showcase.classList.toggle('active')
+            })
+          </script>
+    </body>
+</html>
+
