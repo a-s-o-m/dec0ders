@@ -32,7 +32,7 @@ body {
   width: 1912px;
   height: 840px;
   overflow: hidden;
-  background-image: url("main-page/assets/display.jpg");
+  background-image: url("assets/display.jpg");
   background-size: 1912px 1200px;
   background-position: 0 -160px; 
 }
