@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Yellowtail&family=Raleway:wght@300;700&display=swap');
+
 .footer{
     position: fixed;
     left: 0;
@@ -7,7 +9,19 @@
     color: black;
     text-align: center;
 }
-
+.title-container {
+    position: absolute;
+    left: 42%;
+}
+.font-logo {
+    width: 240.11px;
+    margin: 13px 5px 0 0;
+    font-family: 'Yellowtail', cursive;
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: .1em;
+    color: #93385fff;
+}
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -24,21 +38,17 @@ html {
 .column {
     float: left;
     width: 25%;
-    margin-bottom: 16px;
-    padding: 0 8px;
+    padding: 0 10px;
 }
 
 img {
+    vertical-align: middle;
     border-radius: 50%;
-}
+  }
+  
 
-/* .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 8px;
-} */
-
-.about-section {
-    padding: 50px;
+.about-us-section {
+    padding: 80px;
     text-align: center;
     background-color: pink;
     color: white;
@@ -58,25 +68,32 @@ img {
     color: grey;
 }
 
-.button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-}
-
-.button:hover {
-    background-color: #555;
-}
-
+/* 
 @media screen and (max-width: 650px) {
     .column {
         width: 100%;
         display: block;
     }
-}
+} */
+
+
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .header a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
