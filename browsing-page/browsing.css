@@ -81,8 +81,42 @@ li a {
 
 
 
+<<<<<<< HEAD:browsing.css
 
 
 
 
  
+=======
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: url('assets/cart.png');
+    background-repeat: no-repeat;
+    background-size: 60px;
+    cursor: pointer;
+  }
+  
+  .toggle.active {
+    background: url('assets/close_icon.png');
+    background-repeat: no-repeat;
+    background-size: 60px;
+    background-position: center;
+  }
+
+  .cart {
+    position: absolute;
+    top:0;
+    right:0;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cart ul {
+    position: relative;
+    list-style: none;
+  }
+>>>>>>> 54683a5f2e94607137e1cd8422c5214e189a44d7:browsing-page/browsing.css
