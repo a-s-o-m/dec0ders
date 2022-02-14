@@ -7,23 +7,29 @@
 </head>
     <body>
         <!---Categories-->
-
-        
-    
         <nav>
             <ul>
+<<<<<<< HEAD
                 <li><a href = "../index.html">Home</a></li>
+=======
+                <li><a href = "/index.html">Home</a></li>
+>>>>>>> 7fcf71d1c9986b2af849bb366442899a5941f0e9
                 <li class = "cart">
-                    <a href=".//main-page/checkout.html">
+                    <a href="/checkout-page/checkout.html">
                         <ion-icon name = "basket"></ion-icon>Cart<span>0</span>
                     </a>
                 </li>
             </ul>
         </nav>
-         
+        
             <p>
+<<<<<<< HEAD
                 <a href="checkout.html">
                  <img src="../assets/cart.png" width = "60px" height = "60px">
+=======
+                <a href="/checkout-page/checkout.html">
+                 <img src="assets/cart.png" width = "60px" height = "60px">
+>>>>>>> 7fcf71d1c9986b2af849bb366442899a5941f0e9
                 </a>
             </p>
         <div class = "container">
@@ -31,7 +37,7 @@
             <h2 class = "title">Featured Partners</h2>
             <div class = "row">
                 <div class = "col">
-                    <img src = "../main-page/assets/man1.jpg">
+                    <img src = "/main-page/assets/man1.jpg">
                     <h4>Name</h4>
                     <p>description</p>
                     <!-- <button onclick= "checkout(item1)">Add to Cart</button> -->
@@ -40,7 +46,7 @@
                 
                 
                 <div class = "col">  
-                    <img src = "../main-page/assets/women1.jpg">
+                    <img src = "/main-page/assets/women1.jpg">
                     <h4>Name</h4>
                     <p>description</p>
                     <a class = "add-cart cart2" href = "#">Add to Cart</a>
@@ -48,35 +54,37 @@
                 
                 
                 <div class = "col">
-                    <img src = "../main-page/assets/man2.jpg">
+                    <img src = "/main-page/assets/man2.jpg">
                     <h4>Name</h4>
                     <p>description</p>
                     <a class = "add-cart cart3" href = "#">Add to Cart</a>
                 </div>
                 
                 <div class = "col">
-                    <img src = "../main-page/assets/women2.jpg">
+                    <img src = "/main-page/assets/women2.jpg">
                     <h4>Name</h4>
                     <p>description</p>
                     <a class = "add-cart cart4" href = "#">Add to Cart</a>
                 </div>
                 
                 <div class = "col">
-                    <img src = "../main-page/assets/men3.jpg">
+                    <img src = "/main-page/assets/men3.jpg">
                     <h4>Name</h4>
                     <p>description</p>
                     <a class = "add-cart cart5" href = "#">Add to Cart</a>
                 </div>
                 
                 <div class = "col">
-                    <img src = "../main-page/assets/women3.jpg">
+                    <img src = "/main-page/assets/women3.jpg">
                     <h4>Name</h4>
                     <p>description</p>
                     <a class = "add-cart cart6" href = "#">Add to Cart</a>
                 </div>
                 
                 <div class = "col">
-                    <img src = "../main-page/assets/man4.jpg">
+                <div class = "card" id = "item7">
+                <div class = "image">
+                    <img src = "/main-page/assets/man4.jpg">
                     <div class = "name">Person7</div>
 
                     <h4>Name</h4>
@@ -85,7 +93,9 @@
                 </div>
                 
                 <div class = "col">                    
-                    <img src = "../main-page/assets/woman4.jpg">
+                <div class = "card" id = "item8">
+                <div class = "image">
+                    <img src = "/main-page/assets/woman4.jpg">
                     <div class = "name">Person8</div>
 
                     <h4>Name</h4>
@@ -94,9 +104,10 @@
                 </div>
                 
                 <div class = "col">
-                    <img src = "../main-page/assets/men5.jpg">
+                <div class = "card" id = "item9">
+                <div class = "image">
+                    <img src = "/main-page/assets/men5.jpg">
                     <div class = "name">Person9</div>
-
                     <h4>Name</h4>
                     <p>description</p>
                     <a class = "add-cart cart9" href = "#">Add to Cart</a>
@@ -111,8 +122,7 @@
         <script src="script.js"></script>
         <script>
             const menuToggle = document.querySelector('.toggle')
-            const showcase = document.querySelector('.showcase') 
-        
+            const showcase = document.querySelector('.showcase')     
               menuToggle.addEventListener('click', () => {
               menuToggle.classList.toggle('active')
               showcase.classList.toggle('active')
