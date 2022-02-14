@@ -83,7 +83,7 @@ li a {
     position: relative;
     width: 60px;
     height: 60px;
-    background: url('assets/cart.png');
+    background: url('cart.png');
     background-repeat: no-repeat;
     background-size: 60px;
     cursor: pointer;
