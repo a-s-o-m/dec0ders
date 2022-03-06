@@ -7,7 +7,7 @@ class Companion:
         self.dog_person = dog_person
         self.gender = gender
 
-    def calculate_match(pref_age, preg_height, pref_personality, pref_pet, pref_gender):
+    def calculate_match(self, pref_age, preg_height, pref_personality, pref_pet, pref_gender):
         """Returns match percentage"""
         total = 0
         
