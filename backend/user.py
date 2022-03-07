@@ -23,7 +23,9 @@ class User:
         if len(phone_number) > 10:
             raise ValueError('US phone numbers only')
         elif len(phone_number) < 10:
-            raise ValueError('invalid phone number')
+            raise ValueError('phone number cannot be less than 10 numbers')
+        elif not phone_number.isnumeric():
+            raise ValueError('phone number contains characters that are not numbers')
 
         if len(password) < 5:
             raise ValueError('password should be at least 5 characters')
@@ -38,6 +40,9 @@ class User:
         self.is_companion = False
 
     def become_companion(self):
+        # prompt companion cli
+        # transform user to companion
+        self.is_companion = True
         pass
 
     def validate_email(self, email):
