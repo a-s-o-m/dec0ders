@@ -7,14 +7,14 @@ class companionCatalog:
         data strucuture that stores all companions and their relevant information. Each companion should have
         a name, description of personality, pet preference, and sex
         '''
-        self.companions = [['Dylan OBrien', 'Still lives at home with his parents, but  at least hes off the streets', 'dog', 'male'],
-        ['Amy Wind', 'Great at baking, but you have to wash the dishes', 'cat', 'female'],
-        ['Steve Johnson', 'Can run a mile in 4 minutes, but he never shows up to a date on time','cat','male'],
-        ['Stephanie Cheng', 'Looks like a kitten. Snores like a lion', 'cat', 'female'],
-        ['Cristiano Lopez', 'Nice abs', 'dog', 'male'],
-        ['Helena Rios', 'An aspiring dental student. She also is missing two teeth', 'dog', 'female'],
-        ['Kim Tae-hyung', 'Loves to sing and dance. Has commitment issues', 'dog', 'male'],
-        ['Stephanie Pierce', 'A cat lady, who is purrrrrfect', 'cat', 'female']]
+        self.companions = [['Dylan OBrien', 25, 200, 'extrovert','dog', 'male'],
+        ['Amy Wind', 24, 110, 'introvert', 'cat', 'female'],
+        ['Steve Johnson', 35, 250, 'extrovert','cat','male'],
+        ['Stephanie Cheng', 30, 101, 'extrovert', 'cat', 'female'],
+        ['Cristiano Lopez', 32, 200, 'introvert', 'dog', 'male'],
+        ['Helena Rios', 27, 175, 'introvert', 'dog', 'female'],
+        ['Kim Tae-hyung', 26, 200, 'introvert', 'dog', 'male'],
+        ['Stephanie Pierce', 19, 120, 'extrovert', 'cat', 'female']]
 
 
     def addCompanion(self, new_companion):
