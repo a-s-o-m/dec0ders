@@ -6,7 +6,14 @@ class companionCatalog:
         '''
         data strucuture that stores all companions and their relevant information
         '''
-        self.companions = []
+        self.companions = [['Dylan OBrien', 'Still lives at home with his parents, but  at least hes off the streets', 'dog', 'male'],
+        ['Amy Wind', 'Great at baking, but you have to wash the dishes', 'cat', 'female'],
+        ['Steve Johnson', 'Can run a mile in 4 minutes, but he never shows up to a date on time','cat','male'],
+        ['Stephanie Cheng', 'Looks like a kitten. Snores like a lion', 'cat', 'female'],
+        ['Cristiano Lopez', 'Nice abs', 'dog', 'male'],
+        ['Helena Rios', 'An aspiring dental student. She also is missing two teeth', 'dog', 'female'],
+        ['Kim Tae-hyung', 'Loves to sing and dance. Has commitment issues', 'dog', 'male'],
+        ['Stephanie Pierce', 'A cat lady, who is purrrrrfect', 'cat', 'female']]
 
 
     def addCompanion(self, new_companion):
