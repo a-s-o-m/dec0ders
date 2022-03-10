@@ -1,22 +1,23 @@
 import unittest
+
 from Companion import Companion
 
-# # data for tests
-# description = ''
-# age = 18
-# height = "6'1"
-# personality = ''
-# pet_preference = 'dog'
-# gender = 'M'
+# data for tests
+description = ''
+age = 18
+height = "6'1"
+personality = 'introvert'
+pet_preference = 'dog'
+gender = 'male'
 
-#companion = Companion(description, age, height, personality, pet_preference, gender)
+companion = Companion(description, age, height, personality, pet_preference, gender)
 
 # python3 -m unittest test_companion
 class TestCompanion(unittest.TestCase):
 
     def test_init_types(self):
         # description, personality, pet_preference, gender must be strings
-        self.assertRaises(TypeError, 'Billy Stewart', 65, 150, False, 'cat', 'male') # personality trait must be string
+        self.assertRaises(TypeError, 'Billy Stewart', 18, 150, False, 'cat', 'male') # personality trait must be string
         self.assertRaises(TypeError, 'Timia Northcutt', 27, 'old', 'introvert', 1200, 'female') # animal preference must be string. age must be an int
         self.assertRaises(TypeError, 'Kousei Richeson', 27, '25', 'extrovert', 'dog', 'male') # height must be int or float
         self.assertRaises(TypeError, 'Vivian Alcala', '21', 175, 'introvert', 'dog', 'female') # age must be int
@@ -40,10 +41,10 @@ class TestCompanion(unittest.TestCase):
         # Pet preference should be either "dog" or "cat" (Case-insensitive)
         self.assertRaises(ValueError, 'Helena Rios', 101, 1, 'introvert', 'fish', 'dog')
         # Sex should be either "male" or "female" (Case-insensitive)
-        
+
     def test_match(self):
-        pass
+        self.assertAlmostEqual(companion.calculate_match([20,25], [180,200], 'introvert', 'dog', 'male'),5555) 
         # TODO: ask angel about match function
 
 # if __name__ == "__main__":
-#     unittest.main()
+#     unittest.main() 
