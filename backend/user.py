@@ -45,7 +45,6 @@ class User:
         self.phone_number = phone_number
         self.password = password
         self.fullname = f'{self.firstname} {self.lastname}'
-        self.is_companion = False
         self.companionAccount = None
 
     def become_companion(self, companion_config):
@@ -53,8 +52,12 @@ class User:
         # create companion account for user
         if (not isinstance(companion_config, Companion)):
             raise TypeError("account must be instance of Companion class")
-        self.is_companion = True
         self.companionAccount = companion_config
+    
+    def is_companion(self):
+        if self.companionAccount == None:
+            return False
+        return True
 
     def validate_email(self, email):
         regex = re.compile(r'[^@]+@[^@]+\.[^@]+')
