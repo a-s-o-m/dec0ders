@@ -12,12 +12,18 @@ class User:
 
         if len(firstname.split()) > 1:
             raise ValueError('only input your firstname here')
+        elif not firstname.isalpha():
+            raise ValueError('your firstname should not contain a number')
 
         if len(lastname.split()) > 1:
             raise ValueError('only input your lastname here')
+        elif not lastname.isalpha():
+            raise ValueError('your lastname should not contain a number')
 
         if len(username) < 3:
             raise ValueError('username should be at least 3 characters')
+        elif '@' in username:
+            raise ValueError('username should not contain @ symbol as it will be added afterwards by our system')
 
         if not self.validate_email(email):
             raise ValueError('email address is not valid')
@@ -44,7 +50,7 @@ class User:
 
     def become_companion(self, companion_config):
         # prompt companion cli
-        # transform user to companion
+        # create companion account for user
         if (not isinstance(companion_config, Companion)):
             raise TypeError("account must be instance of Companion class")
         self.is_companion = True
