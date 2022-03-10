@@ -45,17 +45,17 @@ class User:
         self.phone_number = phone_number
         self.password = password
         self.fullname = f'{self.firstname} {self.lastname}'
-        self.companionAccount = None
+        self.companion_account = None
 
     def become_companion(self, companion_config):
         # prompt companion cli
         # create companion account for user
         if (not isinstance(companion_config, Companion)):
             raise TypeError("account must be instance of Companion class")
-        self.companionAccount = companion_config
+        self.companion_account = companion_config
     
     def is_companion(self):
-        if self.companionAccount == None:
+        if self.companion_account == None:
             return False
         return True
 

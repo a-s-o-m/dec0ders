@@ -16,7 +16,7 @@ class TestCompanion(unittest.TestCase):
         catalog = CompanionCatalog()
         catalogSize = len(catalog.companions)
         user.become_companion(Companion(user.fullname, 65, 150, 'introvert', 'cat', 'male'))
-        catalog.addCompanion(user.companionAccount)
+        catalog.addCompanion(user.companion_account)
         # check if companions list is sucessfully updated when a companion is added.
         self.assertEqual(catalogSize+1, len(catalog.companions))
     
