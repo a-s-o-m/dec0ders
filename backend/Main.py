@@ -32,10 +32,10 @@ class Main:
         pet_preference = input("Enter your pet preference")
         sex = input("Enter your sex")
 
-        #Create a new companion
+        #Create a new companion.
         companion = Companion(user.name, age, height, personality, pet_preference, sex)
 
-        #Add new companion to the companion catalog
+        #Add new companion to the companion catalog.
         catalog = CompanionCatalog()
         catalog.addCompanion(companion)
 
