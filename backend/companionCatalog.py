@@ -19,7 +19,7 @@ class CompanionCatalog:
 
         
 
-    def add_companion(self, new_companion):
+    def addCompanion(self, new_companion):
         '''
         The add_companion function enables users to be able to add a new companion to the catalog if they wish. 
         This functions gathers all information and then appends the newly created companion to the catalog.
@@ -28,7 +28,7 @@ class CompanionCatalog:
             raise TypeError("new companion must be instance of Companion class")
         self.companions.append(new_companion) # add new companion to catalog 
 
-    def remove_companion(self, del_companion):
+    def removeCompanion(self, del_companion):
         '''
         The remove_companion function enables companions to be taken off of the catalog. Their attributes and self within 
         the catalog will be deleted, and updated.
