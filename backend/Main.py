@@ -6,7 +6,7 @@ class Main:
     '''def __init__(self):
         # create new user
         self.user = User("name: str, age: int, height: float, personality: str")
-        # take shelfName input
+        # take shelfName input 
         print(f"Welcome, {self.user.username}!")
-        '''
-Companion("sam", "5", "180", "bright", "dog", "female") 
+        ''
+Companion("sam", "5", "180", "bright", "dog", "female")  
