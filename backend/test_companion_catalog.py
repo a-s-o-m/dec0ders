@@ -12,9 +12,9 @@ class TestCompanion(unittest.TestCase):
         self.assertRaises(TypeError, CompanionCatalog.addCompanion, user)
         self.assertRaises(TypeError, CompanionCatalog.addCompanion, '')
         self.assertRaises(TypeError, CompanionCatalog.addCompanion, False)
-        # transform user to companion
         catalog = CompanionCatalog()
         catalogSize = len(catalog.companions)
+        # transform user to companion
         user.become_companion(Companion(user.fullname, 65, 150, 'introvert', 'dog', 'male'))
         catalog.addCompanion(user.companion_account)
         # check if companions list is sucessfully updated when a companion is added.
