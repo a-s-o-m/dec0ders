@@ -9,4 +9,4 @@ class Main:
         # take shelfName input
         print(f"Welcome, {self.user.username}!")
         '''
-Companion("sam", "5", "180", "bright", "dog", "female")
+Companion("sam", "5", "180", "bright", "dog", "female") 
