@@ -1,7 +1,7 @@
 
 from Companion import Companion
 
-class companionCatalog:
+class CompanionCatalog:
     def __init__(self):
         '''
         data strucuture that stores all companions and their relevant information. Each companion should have

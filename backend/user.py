@@ -1,4 +1,6 @@
 import re
+from companionCatalog import CompanionCatalog
+from Companion import Companion
 
 class User:
     def __init__(self, firstname, lastname, username, email, phone_number, password):
@@ -38,12 +40,15 @@ class User:
         self.password = password
         self.fullname = f'{self.firstname} {self.lastname}'
         self.is_companion = False
+        self.companionAccount = None
 
-    def become_companion(self):
+    def become_companion(self, companion_config):
         # prompt companion cli
         # transform user to companion
+        if (not isinstance(companion_config, Companion)):
+            raise TypeError("account must be instance of Companion class")
         self.is_companion = True
-        pass
+        self.companionAccount = companion_config
 
     def validate_email(self, email):
         regex = re.compile(r'[^@]+@[^@]+\.[^@]+')
