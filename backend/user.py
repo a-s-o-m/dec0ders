@@ -1,5 +1,4 @@
 import re
-from companionCatalog import CompanionCatalog
 from Companion import Companion
 
 class User:
@@ -51,7 +50,7 @@ class User:
         # prompt companion cli
         # create companion account for user
         if (not isinstance(companion_config, Companion)):
-            raise TypeError("account must be instance of Companion class")
+            raise TypeError('account must be instance of Companion class')
         self.companion_account = companion_config
     
     def is_companion(self):
@@ -65,8 +64,3 @@ class User:
             return True
         else:
             return False
-        
-
-
-
-
