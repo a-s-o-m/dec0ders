@@ -1,6 +1,6 @@
 import unittest
-from Companion import Companion
-from companionCatalog import CompanionCatalog
+from companion import Companion
+from companion_catalog import CompanionCatalog
 from user import User
 
 # python3 -m unittest test_companion_catalog.py

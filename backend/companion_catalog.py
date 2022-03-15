@@ -1,5 +1,5 @@
 
-from Companion import Companion
+from companion import Companion
 
 class CompanionCatalog:
     def __init__(self):

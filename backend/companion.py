@@ -6,10 +6,10 @@ class Companion:
             if type(parameter) != str: raise TypeError(f'{parameter} must be a string.')
 
         if type(age) != int:
-            raise TypeError('Age must be an integer.')
+            raise TypeError('age must be an integer.')
         
         if type(height) not in [int, float]:
-            raise TypeError('Height must be a number.')
+            raise TypeError('height must be a number.')
         
         personality = personality.lower()
         pet_preference = pet_preference.lower()

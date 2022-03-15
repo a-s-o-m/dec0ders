@@ -1,6 +1,6 @@
 import unittest
 
-from Companion import Companion
+from companion import Companion
 
 # data for test_init_types and for test_init_values
 description = ''

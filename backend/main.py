@@ -1,6 +1,6 @@
-from Companion import Companion
+from companion import Companion
 from user import User
-from companionCatalog import CompanionCatalog
+from companion_catalog import CompanionCatalog
 
 class Main:
     def __init__(self):
