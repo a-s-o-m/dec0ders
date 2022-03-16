@@ -24,7 +24,7 @@ class CLI:
 
         self.user = User(firstname, lastname, username, email, phone_number, password)
         print('----------------------')
-        print(f'Welcome {username}!')
+        print(f'Welcome {self.user.username}!')
         print('----------------------')
 
     def user_to_companion(self):
