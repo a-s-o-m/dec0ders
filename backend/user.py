@@ -42,7 +42,7 @@ class User:
         self.username = f'@{username}'
         self.email = email
         self.phone_number = phone_number
-        self.password = password
+        # self.password = password
         self.fullname = f'{self.firstname} {self.lastname}'
         self.companion_account = None
 
