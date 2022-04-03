@@ -1,10 +1,8 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
-<<<<<<< HEAD
 from seed_library import seed_companions
-=======
-from backend.user import User
->>>>>>> 1c1140a97533711a32d8cfc8e8dc1a02bbc58c4f
+# from backend.user import User
+
 import secrets
 import os
 
