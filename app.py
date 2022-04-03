@@ -1,5 +1,6 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
+from seed_library import seed_companions
 import secrets
 import os
 
@@ -23,6 +24,7 @@ app.secret_key = secrets.token_urlsafe(16)
 # Comment out this create_collection method after you run the app for the first time
 # mongo.db.create_collection('library')
 new_user = True
+companions = seed_companions
 # -- Routes section --
 # HOME Route
 @app.route('/')
@@ -86,9 +88,9 @@ def login():
 #browsing route
 @app.route('/browsing')
 def browsing():
-    #rows = Companion.query.all()
-    return render_template('browsing.html') 
-    
+    #collection = mongo.db.library
+    return render_template('browsing.html', companions = companions) 
+
 
 
 # Adding function to run Flask by running current .py file
