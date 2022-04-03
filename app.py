@@ -1,5 +1,10 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
+<<<<<<< HEAD
+from seed_library import seed_companions
+=======
+from backend.user import User
+>>>>>>> 1c1140a97533711a32d8cfc8e8dc1a02bbc58c4f
 import secrets
 import os
 
@@ -23,6 +28,7 @@ app.secret_key = secrets.token_urlsafe(16)
 # Comment out this create_collection method after you run the app for the first time
 # mongo.db.create_collection('library')
 new_user = True
+companions = seed_companions
 # -- Routes section --
 # HOME Route
 @app.route('/')
@@ -39,7 +45,13 @@ def signup():
 
         #if user not in database
         if not existing_user:
+            firstname = request.form['firstname']
+            lastname = request.form['lastname']
             username = request.form['username']
+            email = request.form['email']
+            phone_number = request.form['phone_number']
+            password = request.form['password']
+            user = User(firstname, lastname, username, email, phone_number, password)
             #encode password for hashing
             password = request.form['password'].encode("utf-8")
             # create new user
@@ -86,9 +98,9 @@ def login():
 #browsing route
 @app.route('/browsing')
 def browsing():
-    #rows = Companion.query.all()
-    return render_template('browsing.html') 
-    
+    #collection = mongo.db.library
+    return render_template('browsing.html', companions = companions) 
+
 
 
 # Adding function to run Flask by running current .py file
