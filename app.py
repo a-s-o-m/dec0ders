@@ -1,7 +1,5 @@
-from flask import Flask
-from flask import render_template
 from flask_pymongo import PyMongo
-from flask import request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for
 import secrets
 import os
 
@@ -14,8 +12,7 @@ app.config['MONGO_DBNAME'] = 'database'
 
 # URI of database
 # Accessed from CONFIG VARS
-secret_key = os.environ.get('MONGO_URI')
-app.config['MONGO_URI'] = secret_key
+app.config['MONGO_URI'] = "mongodb+srv://saulotero:9RZJoVZ9w8baMYgY@cluster0.kflcs.mongodb.net/dec0ders?retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app)
@@ -25,9 +22,12 @@ app.secret_key = secrets.token_urlsafe(16)
 
 # Comment out this create_collection method after you run the app for the first time
 # mongo.db.create_collection('library')
-
+new_user = True
 # -- Routes section --
-# INDEX Route
+# HOME Route
+@app.route('/')
+def home():
+    return render_template('home.html', new_user=new_user)
 
 #SIGNUP Route
 @app.route('/signup', methods=['GET', 'POST'])
@@ -82,3 +82,8 @@ def login():
             return 'User not found.'
     else:
         return render_template('login.html')
+
+
+# Adding function to run Flask by running current .py file
+if __name__=='__main__':
+    app.run(debug=True)

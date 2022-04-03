@@ -1,0 +1,17 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Yellowtail&family=Raleway:wght@300;700&display=swap');
+:root {
+    --primary-color:#232327;
+    --secondary-color: #e6c2bf;
+    --border-color: rgb(255, 255, 255);
+    --logo-color: #93385fff;
+    --nav-color: #4f3466ff;
+    --accent-color: #9f6b99ff;
+    --caption-color: #301728ff;
+  }
+  
+/* Page Sections */
+* {
+  margin: 0;
+  padding: 0;
+}

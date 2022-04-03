@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rent-A-Date</title>
+        
+        {% block css %}
+        {% endblock css %}
+    </head>
+    <body style="height:100%;">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Days+One&family=Yellowtail&family=Raleway:wght@300;700&display=swap');
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            a, a:visited {
+            text-decoration: none;
+            }
+            img {
+                display: inline;
+                height: 100%;
+            }
+            nav {
+                display: flex;
+                height: 10%;
+                justify-content: space-between;
+            }
+            .left-block, .right-block {
+                display: flex;
+                width: 42%;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .logo {
+                display: flex;
+                width: 17%;
+                height: auto;
+                justify-content: space-between;
+                align-items: center;
+            }
+            h1 a{
+                font-family: 'Yellowtail';
+                font-weight: bolder;
+                color: #93385fff;
+                letter-spacing: .1em;
+                font-size: 1.5em;
+            }
+            h2 a {
+                font-family: 'Raleway', sans-serif;
+                color: #4f3466ff;
+                letter-spacing: .2em;
+                font-size: 1.1em;
+            }
+        </style>
+        <nav>
+            <container class="left-block">
+                <h2>
+                    <a href="/about-us-page">contact</a>
+                </h2>
+                <h2>
+                    <a href="/match-test">find your match</a>
+                </h2>
+            </container>
+            
+            <container class="logo">
+                <h1>
+                    <a href="/">Rent-A-Date</a>
+                </h1>
+                <img src="{{ url_for('static', filename='/assets/logo5.png')}}">
+            </container>
+
+            <container class="right-block">
+                <h2>
+                    <a href="/browsing-page">browse</a>
+                </h2>
+                <h2>
+                    {% if new_user %}
+                        <a href="/signup">sign up</a>
+                    {% else %}
+                        <a href="/account">account</a>
+                    {% endif %}
+                </h2>
+            </container>
+        </nav>
+        {% block body %}{% endblock body %}
+    </body>
+</html>
+
+
