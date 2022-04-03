@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask_pymongo import PyMongo
 from flask import request, redirect, session, url_for
+from backend import user
 import secrets
 import os
 
@@ -39,7 +40,13 @@ def signup():
 
         #if user not in database
         if not existing_user:
+            firstname = request.form['firstname']
+            lastname = request.form['lastname']
             username = request.form['username']
+            email = request.form['email']
+            phone_number = request.form['phone_number']
+            password = request.form['password']
+            user = user.User(firstname, lastname, username, email, phone_number, password)
             #encode password for hashing
             password = request.form['password'].encode("utf-8")
             # create new user
