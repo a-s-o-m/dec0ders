@@ -86,8 +86,9 @@ def login():
 #browsing route
 @app.route('/browsing')
 def browsing():
-    rows = Companion.query.all()
-    return render_template('browsing.html', rows = rows)
+    #rows = Companion.query.all()
+    return render_template('browsing.html') 
+    
 
 
 # Adding function to run Flask by running current .py file
