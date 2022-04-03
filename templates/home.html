@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rent-A-Date</title>
+        <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='home-page.css') }}">
+    </head>
+    <body>
+        <nav class="nav-bar">
+            <container class="nav-left-block">
+                <h2>
+                    <a class="nav-caption" href="/about-us-page">contact</a>
+                </h2>
+                <h2>
+                    <a class="nav-caption" href="/match-test">find your match</a>
+                </h2>
+            </container>
+            
+            <container class="logo">
+                <h1>
+                    <a href="/"><span class="logo-font" >Rent-A-Date</span></a>
+                </h1>
+                <img class="logo-img" src="{{ url_for('static', filename='/assets/logo5.png')}}">
+            </container>
+
+            <container class="nav-right-block">
+                <h2>
+                    <a class="nav-caption" href="/browsing">browse</a>
+                </h2>
+                <h2>
+                    {% if new_user %}
+                        <a class="nav-caption" href="/signup">sign up</a>
+                    {% else %}
+                        <a class="nav-caption" href="/account">account</a>
+                    {% endif %}
+                </h2>
+            </container>
+        </nav>
+        <container class="main-container">
+            <p>hola</p>
+        </container>
+    </body>
+</html>

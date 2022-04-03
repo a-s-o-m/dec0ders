@@ -1,0 +1,68 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Yellowtail&family=Raleway:wght@300;700&display=swap');
+:root {
+    --primary-color:#232327;
+    --secondary-color: #e6c2bf;
+    --border-color: rgb(255, 255, 255);
+    --logo-color: #93385fff;
+    --nav-color: #4f3466ff;
+    --accent-color: #9f6b99ff;
+    --caption-color: #301728ff;
+  }
+  
+/* Page Sections */
+html, body {
+  height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+/* Nav Bar */
+.nav-bar {
+  display: flex;
+  height: 10%;
+  justify-content: space-between;
+}
+.nav-left-block, .nav-right-block {
+  display: flex;
+  width: 42%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.logo-font{
+  font-family: 'Yellowtail', cursive;
+  font-weight: 700;
+  color: var(--logo-color);
+  letter-spacing: .1em;
+  font-size: 1.5em;
+}
+.nav-caption{
+  font-family: 'Raleway', sans-serif;
+  color: var(--nav-color);
+  letter-spacing: .2em;
+  font-size: 1.1em;
+}
+.logo {
+  display: flex;
+  width: 17%;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-img {
+  display: inline;
+  height: 100%;
+}
+/* Main Container */
+.main-container {
+  display: flex;
+  height: 10%;
+  justify-content: space-between;
+}
+/* Elements */
+
+a, a:visited {
+  text-decoration: none;
+}
+
