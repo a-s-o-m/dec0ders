@@ -38,14 +38,16 @@ a, a:visited {
     width: 30%;
     border-radius: 1%;
     text-align: center;
-    align-items: center;
+    
 }
 .test-box h1, label {
     display: block;
 }
+.test-box h1 {
+
+}
 select {
     width: 100%;
-    border-radius: 5%;
 }
 #button {
     display: inline-block;
