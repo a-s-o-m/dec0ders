@@ -1,28 +1,38 @@
-{% extends "layout.html" %}
+{% extends "nav-bar.html" %}
 {% block css %}
-<link href="{{ url_for('static', filename='match-test.css')}}" rel='stylesheet' type='text/css'">
+<link href="{{ url_for('static', filename='css/match-test.css')}}" rel='stylesheet' type='text/css'">
 {% endblock css %}
 {% block body %}
-<form method="POST" action="/match-test">
-    <input type="text" name="min_age" placeholder="Min Age" /> <br>
-    <input type="text" name="max_age" placeholder="Max Age" /> <br>
-    <input type="text" name="min_height" placeholder="Username" /> <br>
-    <input type="text" name="max_height" placeholder="Email" /> <br>
-    <select name="personality">
-        <option value="introverted">Introverted</option>
-        <option value="extroverted">Extroverted</option>
-    </select>
 
-    <select name="pet">
-        <option value="cat">Cat Person</option>
-        <option value="dog">Dog Person</option>
-    </select>
-
-    <select name="sex">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
-
-    <input type="submit" id="button" value="Find your match" />
-</form>
+<container class="main-body">
+    <container id="main-container">
+        <container class="test-box">
+            <form method="POST" action="/match-test">
+                <h1>Find your perfect date!</h1>
+                <label>Preferred age range</label>
+                <input type="text" name="min_age" placeholder="Min Age"/> 
+                <input type="text" name="max_age" placeholder="Max Age"/>
+                <label>Preferred height range (cm)</label>
+                <input type="text" name="min_age" placeholder="Min Age"/> 
+                <input type="text" name="max_age" placeholder="Max Age"/>
+                <label>Preferred personality type</label>
+                <select name="personality">
+                    <option value="introverted">Introverted</option>
+                    <option value="extroverted">Extroverted</option>
+                </select>
+                <label>You are more of a</label>
+                <select name="pet">
+                    <option value="cat">Cat Person</option>
+                    <option value="dog">Dog Person</option>
+                </select>
+                <label>You are looking for</label>
+                <select name="sex">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <input type="submit" id="button" value="Find your match" />
+            </form> 
+        </container> 
+    </container>
+</container>
 {% endblock body %}

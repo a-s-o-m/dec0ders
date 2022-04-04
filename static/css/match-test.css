@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Yellowtail&family=Raleway:wght@300;700&display=swap');
+:root {
+    --primary-color:#232327;
+    --secondary-color: #e6c2bf;
+    --border-color: rgb(255, 255, 255);
+    --logo-color: #93385fff;
+    --nav-color: #4f3466ff;
+    --accent-color: #9f6b99ff;
+    --caption-color: #301728ff;
+  }
+a, a:visited {
+    text-decoration: none;
+  }
+  .main-body {
+    height: 90%;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#main-container {
+    margin-bottom: 2%;
+    height: 95%;
+    width: 85%;
+    background: url(../assets/display4.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.test-box {
+    background: rgb(255, 255, 255, 0.9);
+    font-family: 'Days One', sans-serif;
+    font-size: large;
+    height: 90%;
+    width: 30%;
+    border-radius: 1%;
+    text-align: center;
+    align-items: center;
+}
+.test-box h1, label {
+    display: block;
+}
+select {
+    width: 100%;
+    border-radius: 5%;
+}
+#button {
+    display: inline-block;
+}

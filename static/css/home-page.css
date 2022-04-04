@@ -39,7 +39,7 @@ color: var(--accent-color);
     margin-bottom: 2%;
     height: 95%;
     width: 85%;
-    background: url(./assets/display2.jpg);
+    background: url(../assets/display2.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     position: relative;
@@ -50,6 +50,7 @@ color: var(--accent-color);
 
 .caption-box {
     background: rgb(255, 255, 255, 0.6);
+    border-radius: 1%;
     font-family: 'Days One', sans-serif;
     font-size: large;
     height: 45%;
