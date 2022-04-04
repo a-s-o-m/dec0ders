@@ -28,12 +28,13 @@ companions = seed_companions
 # -- Routes section --
 # HOME Route
 @app.route('/')
-@app.route('/index')
-def index():
-    return render_template('index.html')
-
+@app.route('/home')
 def home():
     return render_template('home.html', new_user=new_user)
+#MATCH TEST Route
+@app.route('/match-test', methods=['GET', 'POST'])
+def match_test():
+    return render_template('match-test.html')
 
 #SIGNUP Route
 @app.route('/signup', methods=['GET', 'POST'])
