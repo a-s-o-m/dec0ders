@@ -96,7 +96,7 @@ def login():
 @app.route('/browsing')
 def browsing():
     #collection = mongo.db.library
-    return render_template('browsing.html', companions = companions) 
+    return render_template('browsing.html', companions = companions, new_user = new_user) 
 
 #static route
 @app.route('/<path:path>')
@@ -105,8 +105,31 @@ def get_dir(path):
     #print("Hey now, your ", path) 
     return render_template(path) 
 
+# new companion route
+@app.route('/new_companion', methods = ['GET', 'POST'])
+def new_book():
+    if request.method == "GET":
+        #render the form, with the companion list to populate the dropdown menu
+        return render_template('new_companion.html', companions = companions)
+    else:
+        #assign form data to variables
+        name = request.form['name']
+        age = request.form['age']
+        height = request.form['height']
+        type = request.form['type']
+        animal = request.form['animal']
+        gender = request.form['gender']
+        pic = request.form['pic']
+        
+        #retrieve username from session data if present
+        if session:
+            user = session['username']
+        else:
+            user = None
 
-
+        #insert an entry to the database using the variables declared above
+        companions.append({"name":name, "age":age, "height":height, "type": type, "animal": animal, "gender": gender, "pic": pic})
+    return redirect('/')
 # Adding function to run Flask by running current .py file
 if __name__=='__main__':
     app.run(debug=True)
