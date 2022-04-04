@@ -1,6 +1,7 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
 from seed_library import seed_companions
+
 # from backend.user import User
 
 import secrets
@@ -32,6 +33,10 @@ companions = seed_companions
 @app.route('/')
 def home():
     return render_template('home.html', new_user=new_user)
+#MATCH TEST Route
+@app.route('/match-test', methods=['GET', 'POST'])
+def match_test():
+    return render_template('match-test.html')
 
 #SIGNUP Route
 @app.route('/signup', methods=['GET', 'POST'])
@@ -49,7 +54,7 @@ def signup():
             email = request.form['email']
             phone_number = request.form['phone_number']
             password = request.form['password']
-            user = User(firstname, lastname, username, email, phone_number, password)
+            #user = User(firstname, lastname, username, email, phone_number, password)
             #encode password for hashing
             password = request.form['password'].encode("utf-8")
             # create new user
@@ -98,6 +103,13 @@ def login():
 def browsing():
     #collection = mongo.db.library
     return render_template('browsing.html', companions = companions) 
+
+#static route
+@app.route('/<path:path>')
+def get_dir(path):
+    #collection = mongo.db.library
+    #print("Hey now, your ", path) 
+    return render_template(path) 
 
 
 

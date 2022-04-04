@@ -52,24 +52,61 @@ html, body {
     display: inline;
     height: 80px;
   }
-  /* Main Container */
+  /* Main Container
   .main-container {
     display: flex;
     height: 10%;
     justify-content: space-between;
-  }
+  } */
   /* Elements */
   
-  a, a:visited {
+  /* a, a:visited {
     text-decoration: none;
-  }
-  
-  
-/* Elements */
-
-/* a, a:visited {
-  text-decoration: none;
+  } */
+  .categories {
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
 }
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.col {
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+
+.col:hover {
+    transform: translateY(-5px);
+}
+
+.col img {
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    margin: 0 auto 80px;
+    position: relative;
+    line-height: 100px;
+    color: gray;
+}
+
+.title:hover {
+    color: pink;
+}
+
+Elements
+
 #topdiv1, #topdiv0{
 	margin-left: 20%;
 	margin-right: 30%;
@@ -97,5 +134,13 @@ html, body {
 }
 
 .needspace{
-	margin-left: 15px;
-} */
+	flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+} 
+
+.card-img-top {
+    width: 100%;
+}

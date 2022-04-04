@@ -38,21 +38,30 @@
                     </h2>
                 </container>
             </nav>
-                    <div class="row" id="index0">
+            <div class = "grid">
+                <div class = "categories">
+                    <h2 class = "title">Featured Partners</h2>
+                    <div class = "row">
                         {% for companion in companions %}
+                        <div class = "col">
                             <div class="card needspace" style="width: 18rem;">
                                 <img src= {{companion.pic}} class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{companion.name}}</h5>
-                                    <p class="card-text">{{companion.age}}</p>
-                                    <p class="card-text">{{companion.height}}</p>
-                                    <p class="card-text">{{companion.type}}</p>
-                                    <p class="card-text">{{companion.animal}}</p>
-                                    <p class="card-text">{{companion.gender}}</p>
-                                  </div>
+                                    <h5 class="card-title">Companion Name: {{companion.name}}</h5>
+                                    <p class="card-text">Age: {{companion.age}}</p>
+                                    <p class="card-text">Height: {{companion.height}}</p>
+                                    <p class="card-text">Type: {{companion.type}}</p>
+                                    <p class="card-text">Animal: {{companion.animal}}</p>
+                                    <p class="card-text">Gender: {{companion.gender}}</p>
+                                </div>
                             </div>
+                        </div>
                         {% endfor %}
                     </div>
+                </div>
+            </div>
+        
+            </div>
         </div>
         
     </body>
