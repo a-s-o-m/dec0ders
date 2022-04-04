@@ -13,16 +13,85 @@
 /* Page Sections */
 
 /* Main Container */
-.main-container {
-    display: block;
-    background-color:green;
-    height: 80px;
+.main-body {
+    height: 90%;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
-p {
-    font-size: 50px;
+button {
+  background-color: rgb(255, 255, 255, 0);
+  border: none;
+  font-size: 4em;
+  font-weight: bold;
+  color: var(--secondary-color);
 }
-/* Elements */
+#left-button {
+    margin-left: 1%;
+}
+#right-button {
+    margin-right: 1%;
+}
+button:hover {
+color: var(--accent-color);
+}
+#main-container {
+    margin-bottom: 2%;
+    height: 95%;
+    width: 85%;
+    background: url(./assets/display2.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.caption-box {
+    background: rgb(255, 255, 255, 0.6);
+    font-family: 'Days One', sans-serif;
+    font-size: large;
+    height: 45%;
+    width: 40%;
+    text-align: center;
+    position: relative;
+    
+}
+
+#caption1 h1 {
+    margin: 10% 0 8% 0;
+}
+#caption1 p {
+    margin-bottom: 2%;
+}
+#caption2 h1 {
+    margin: 7% 0 5% 0;
+}
+#caption2 p {
+    margin-bottom: 1.5%;
+}
+#caption3 h1 {
+    margin: 7% 0 7% 0;
+}
+#caption3 p {
+    margin-bottom: 2%;
+}
+.caption-box span {
+    color: var(--logo-color);
+}
+/* .page-indicators {
+    display: flex;
+    height: 1%;
+}
+.indicator {
+    color: var(--accent-color);
+} */
+
+/* Elements */
+.hidden {
+    display: none;
+}
 a, a:visited {
   text-decoration: none;
 }

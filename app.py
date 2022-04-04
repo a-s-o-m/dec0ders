@@ -1,7 +1,9 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
 from seed_library import seed_companions
-#from backend.user import User
+
+# from backend.user import User
+
 import secrets
 import os
 
@@ -31,6 +33,10 @@ companions = seed_companions
 @app.route('/')
 def home():
     return render_template('home.html', new_user=new_user)
+#MATCH TEST Route
+@app.route('/match-test', methods=['GET', 'POST'])
+def match_test():
+    return render_template('match-test.html')
 
 #SIGNUP Route
 @app.route('/signup', methods=['GET', 'POST'])

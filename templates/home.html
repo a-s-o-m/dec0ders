@@ -1,10 +1,38 @@
 {% extends "layout.html" %}
 {% block css %}
-<link href="{{ url_for('static', filename='home-page.css')}}" rel='stylesheet' type='text/css' ">
+<link href="{{ url_for('static', filename='home-page.css')}}" rel='stylesheet' type='text/css'">
 {% endblock css %}
 {% block body %}
-<container class="main-container">
-    <p>hola</p>
+<container class="main-body">
+    <container id="main-container">
+        <button id="left-button" onclick="changeDisplayLeft()">&LeftTriangleBar;</button>
+        <container class="caption-box" id="caption1">
+            <h1>Time is <span>money</span>.</h1>
+            <p><span>Tired</span> of trying to slide into their DMs to no avail?</p>
+            <p>Stop <span>wasting</span> your life.</p>
+            <p>Get what you want <span>NOW</span>.</p>
+        </container>
+        <container class="caption-box hidden" id="caption2">
+            <h1>Get the <span>date</span> you <span>always</span> dreamed of.</h1>
+            <p>Our <span>unbelievable</span> array of companions will make you <span>shine</span> through the darkest night.</p>
+            <p><span>Impress</span> your coworkers.</p>
+            <p><span>Flex</span> on your friends.</p>
+            <p>Make your dissapointed parents <span>proud</span>.</p>
+        </container>
+        <container class="caption-box hidden" id="caption3">
+            <h1>Get the <span>best</span> dating <span>experience</span>.</h1>
+            <p>Money is <span>power</span>.</p>
+            <p>There is no shame in paying for what you <span class="accent">want</span>.</p>
+            <p>Fill that <span>void</span> today.</p>
+        </container>
+        <button id="right-button" onclick="changeDisplayRight()">&RightTriangleBar;</button>
+    </container>
 </container>
+<script src="{{ url_for('static', filename='home-page.js')}}"></script>
+<!-- <container class="page-indicators">
+    <container class="indicator"></container>
+    <container class="indicator"></container>
+    <container class="indicator"></container>
+</container> -->
 {% endblock body %}
         
