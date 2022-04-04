@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Rent-A-Date</title>
-    <link href="/main-page/main-page.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet" type="text/css" />
   </head>
 
   <body>   
@@ -12,20 +12,20 @@
     <div class="nav-bar">
       
       <div class="nav-container" id="contact">
-        <a href="about-us-page/about-us.html">
+        <a href="about-us.html">
           <h2 class="nav-title">contact</h2>
         </a>
       </div>
 
-      <a href="/index.html">
+      <a href="index.html">
       <div class="title-container" style="display:flex;">
         <p class="font-logo">Rent-A-Date</p>
-        <img class="logo" src="main-page/assets/logo5.png" height="80px">
+        <img class="logo" src="{{ url_for('static',filename='assets/logo5.png') }}" height="80px">
       </div>
       </a>
 
       <div class="nav-container" id="browse">
-        <a href="/browsing-page/browsing.html"> 
+        <a href="browsing.html"> 
           <h2 class="nav-title" >browse</h2>
         </a>
       </div>

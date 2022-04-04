@@ -1,10 +1,9 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
 from seed_library import seed_companions
-#from backend.user import User
+from backend.user import User
 import secrets
 import os
-
 
 # -- Initialization section --
 app = Flask(__name__)
@@ -29,6 +28,10 @@ companions = seed_companions
 # -- Routes section --
 # HOME Route
 @app.route('/')
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
 def home():
     return render_template('home.html', new_user=new_user)
 
@@ -37,9 +40,10 @@ def home():
 def signup():
     if request.method == "POST":
         users = mongo.db.users
-        #search for username in database
-        existing_user = users.find_one({'username': request.form['username']})
-
+        #search for username/email in database
+        existing_user = users.find_one({'$or': [{'username': request.form['username']},
+                     {'email': request.form['email']}]})
+        
         #if user not in database
         if not existing_user:
             firstname = request.form['firstname']
@@ -48,9 +52,9 @@ def signup():
             email = request.form['email']
             phone_number = request.form['phone_number']
             password = request.form['password']
-            #user = User(firstname, lastname, username, email, phone_number, password)
+            user = User(firstname, lastname, username, email, phone_number, password)
             #encode password for hashing
-            password = request.form['password'].encode("utf-8")
+            # password = request.form['password'].encode("utf-8")
             # create new user
 
             # #hash password
@@ -73,11 +77,12 @@ def login():
     if request.method == "POST":
         users = mongo.db.users
         #search for username in database
-        login_user = users.find_one({'name': request.form['username']})
+        login_user = users.find_one({'username': request.form['username']})
 
         #if username in database
         if login_user:
             db_password = login_user['password']
+            
             #encode password
             password = request.form['password'].encode("utf-8")
             #compare username in database to username submitted in form
