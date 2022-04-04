@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/auth.css') }}">
     <title>Log In</title>
 </head>
 <body>
@@ -25,12 +25,12 @@
     <form method="POST" action="/signup">
         <input type="text" name="firstname" placeholder="First Name" /> <br>
         <input type="text" name="lastname" placeholder="Last Name" /> <br>
-        <input type="text" name="username" placeholder="Username" /> <br>
+        <input type="text" name="username" placeholder="Username"/> <br>
         <input type="text" name="email" placeholder="Email" /> <br>
         <input type="text" name="phone_number" placeholder="Phone Number" /> <br>
-        <input type="text" name="password" placeholder="Password" /><br>
-        <input type="submit" id="button" value="Submit" />
+        <input type="text" name="password" placeholder="Password: at least 5 characters" /><br>
+        <input type="submit" id="button" value="Sign Up" />
     </form>
-    <p><a href="/">Cancel</a></p>
+    <p><a href="/login">Already a user? Login</a></p>
 </body>
 </html>

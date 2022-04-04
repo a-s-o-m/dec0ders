@@ -4,17 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rent-A-Date</title>
-        <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='browsing.css') }}">
+        <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/browsing.css') }}">
     </head>
     <body>
         <div class = "container" id = "topdiv6">
             <nav class="nav-bar">
                 <container class="nav-left-block">
                     <h2>
-                        <a class="nav-caption" href="/about-us-page">contact</a>
+                        <a class="nav-caption" href="about-us.html">contact</a>
                     </h2>
                     <h2>
-                        <a class="nav-caption" href="/match-test">find your match</a>
+                        <a class="nav-caption" href="match-test.html">find your match</a>
                     </h2>
                 </container>
                 
@@ -27,13 +27,13 @@
     
                 <container class="nav-right-block">
                     <h2>
-                        <a class="nav-caption" href="/browsing">browse</a>
+                        <a class="nav-caption" href="new-companion.html">register</a>
                     </h2>
                     <h2>
                         {% if new_user %}
-                            <a class="nav-caption" href="/signup">sign up</a>
+                            <a class="nav-caption" href="signup.html">sign up</a>
                         {% else %}
-                            <a class="nav-caption" href="/account">account</a>
+                            <a class="nav-caption" href="account.html">account</a>
                         {% endif %}
                     </h2>
                 </container>
@@ -49,7 +49,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Companion Name: {{companion.name}}</h5>
                                     <p class="card-text">Age: {{companion.age}}</p>
-                                    <p class="card-text">Height: {{companion.height}}</p>
+                                    <p class="card-text">Height: {{companion.height}} cm</p>
                                     <p class="card-text">Type: {{companion.type}}</p>
                                     <p class="card-text">Animal: {{companion.animal}}</p>
                                     <p class="card-text">Gender: {{companion.gender}}</p>

@@ -3,11 +3,11 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About Us</title>
-    <link href="about-us.css" rel="stylesheet" type="text/css" />
-    <a href="/index.html">
+    <link href="{{ url_for('static', filename='css/about-us.css')}}" rel="stylesheet" type="text/css" />
+    <a href="home.html">
         <div class="title-container" style="display:flex;">
           <p class="font-logo">Rent-A-Date</p>
-          <img class="logo" src="/main-page/assets/logo5.png" height="80px">
+          <img class="logo" src="{{ url_for('static', filename='assets/logo5.png')}}" height="80px">
         </div>
     </a>
 </head>
@@ -24,7 +24,7 @@
 <h2 style="text-align:center">Our Team</h2>
     <div class="row">
         <div class="column">
-            <img src="assets/Renee.JPG" alt="Renee" height="280px" width="280px">
+            <img src="{{ url_for('static', filename='assets/Renee.JPG')}}" alt="Renee" height="280px" width="280px">
             <div class="container">
                 <h2>Renee Catanach</h2>
                 <p class="title">CEO & Founder</p>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="column">
-            <img src="assets/Victor.jpg" alt="Victor" height="280px" width="280px">
+            <img src="{{ url_for('static', filename='assets/Victor.jpg')}}" alt="Victor" height="280px" width="280px">
             <div class="container">
                 <h2>Victor Akpan</h2>
                 <p class="title">Chief Product Officer</p>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="column">
-            <img src="assets/Angel.jpeg" alt="Angel" height=280px" width="280px">
+            <img src="{{ url_for('static', filename='assets/Angel.jpeg')}}" alt="Angel" height=280px" width="280px">
             <div class="container">
                 <h2>Angel Otero</h2>
                 <p class="title">Chief Technical Officer</p>
