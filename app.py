@@ -34,7 +34,7 @@ def home():
 #MATCH TEST Route
 @app.route('/match-test', methods=['GET', 'POST'])
 def match_test():
-    return render_template('match-test.html')
+    return render_template('match-test.html', new_user=new_user)
 
 #SIGNUP Route
 @app.route('/signup', methods=['GET', 'POST'])
