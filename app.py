@@ -138,7 +138,7 @@ def login():
 @app.route('/browsing')
 def browsing():
     companions = mongo.db.companions
-    return render_template('browsing.html', companions = companions) 
+    return render_template('browsing.html',new_user=new_user, companions = companions) 
 
 #static route
 @app.route('/<path:path>')
