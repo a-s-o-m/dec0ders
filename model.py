@@ -142,3 +142,5 @@ class CompanionCatalog:
         if (not isinstance(new_companion, Companion)):
             raise TypeError("new companion must be instance of Companion class")
         self.companions.append(new_companion) # add new companion to catalog 
+
+catalog = CompanionCatalog().companions

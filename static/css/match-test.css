@@ -115,3 +115,33 @@ option {
 #button:active {
     transform: translateY(3px);
 }
+.profile_pic {
+    height: 50%;
+    margin-bottom: 5%;
+}
+#result-title {
+    font-weight: bold;
+    font-size: 1.4em;
+    letter-spacing: .2em;
+    color: var(--logo-color);
+    margin: 4% 0 6% 0;
+}
+.result-information p {
+    color: var(--nav-color);
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 2%;
+}
+ span {
+    color: var(--accent-color);
+}
+#description {
+    font-weight: normal;
+    font-size: 1.1em;
+    margin-top: 5%;
+}
+#name {
+    color: var(--logo-color);
+    font-size: 1.5em;
+    margin-bottom: 4%;
+}

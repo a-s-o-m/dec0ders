@@ -1,7 +1,7 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
-from seed_library import seed_companions
 from backend.user import User
+from model import catalog
 import secrets
 import os
 
@@ -24,17 +24,53 @@ app.secret_key = secrets.token_urlsafe(16)
 # Comment out this create_collection method after you run the app for the first time
 # mongo.db.create_collection('library')
 new_user = True
-#companions = seed_companions
+
+
 # -- Routes section --
 # HOME Route
 @app.route('/')
 @app.route('/home')
 def home():
+    # companions = mongo.db.companions
+
+    # for companion in catalog:
+    #     companions.insert_one(companion.to_document())
+
     return render_template('home.html', new_user=new_user)
+
 #MATCH TEST Route
 @app.route('/match-test', methods=['GET', 'POST'])
 def match_test():
-    return render_template('match-test.html', new_user=new_user)
+    if request.method == 'POST':
+        companions = mongo.db.companions
+
+        min_age = (int)(request.form["min_age"])
+        max_age = (int)(request.form["max_age"])
+        if min_age > max_age: min_age = max_age
+        pref_age = [min_age, max_age]
+
+        min_height = (int)(request.form["min_height"])
+        max_height = (int)(request.form["max_height"])
+        if min_height > max_height: min_height = max_height
+        pref_height = [min_height, max_height]
+
+        pref_personality = request.form["personality"]
+        pref_pet = request.form["pet"]
+        pref_sex = request.form['sex']
+        
+        max_score = -1
+        for companion in catalog:
+            score = companion.calculate_match(pref_age, pref_height, pref_personality, pref_pet, pref_sex)
+            if score > max_score and companion.sex == pref_sex:
+
+                best_match = companion
+                max_score = score
+
+        best_match = companions.find_one({"name":best_match.name})
+
+        return render_template('match-test.html', new_user=new_user, companion=best_match)   
+    else:
+        return render_template('match-test.html', new_user=new_user)
 
 #SIGNUP Route
 @app.route('/signup', methods=['GET', 'POST'])
@@ -102,7 +138,7 @@ def login():
 @app.route('/browsing')
 def browsing():
     #collection = mongo.db.library
-    return render_template('browsing.html', companions = companions, new_user = new_user) 
+    return render_template('browsing.html', new_user = new_user) 
 
 #static route
 @app.route('/<path:path>')
@@ -116,7 +152,8 @@ def get_dir(path):
 def new_book():
     if request.method == "GET":
         #render the form, with the companion list to populate the dropdown menu
-        return render_template('new_companion.html', companions = companions)
+        # return render_template('new_companion.html', companions = companions)
+        pass
     else:
         #assign form data to variables
         name = request.form['name']
@@ -134,7 +171,7 @@ def new_book():
             user = None
 
         #insert an entry to the database using the variables declared above
-        companions.append({"name":name, "age":age, "height":height, "type": type, "animal": animal, "gender": gender, "pic": pic})
+        # companions.append({"name":name, "age":age, "height":height, "type": type, "animal": animal, "gender": gender, "pic": pic})
     return redirect('/')
 # Adding function to run Flask by running current .py file
 if __name__=='__main__':

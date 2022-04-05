@@ -7,6 +7,16 @@
 <container class="main-body">
     <container id="main-container">
         <container class="test-box">
+            {% if companion %}
+            <p id="result-title">Our recommendation:</p>
+            <img class="profile_pic" src={{companion.pic}}>
+            <container class = "result-information">
+                <p id="name">{{companion.name}}</p>
+                <p><span>{{companion.age}}</span> years old, <span>{{companion.height}}</span> cm tall</p>
+                <p>{{companion.type}}ed, <span>{{companion.animal}}</span> lover </p>
+                <p id="description">{{companion.description}}</p>
+            </container> 
+            {% else %}
             <form method="POST" action="/match-test">
                 <h1>Find your perfect date!</h1>
                 <label>preferred age</label>
@@ -45,8 +55,8 @@
                </container> 
                 <label>preferred personality</label>
                 <select name="personality">
-                    <option value="introverted">introverted</option>
-                    <option value="extroverted">extroverted</option>
+                    <option value="introvert">introverted</option>
+                    <option value="extrovert">extroverted</option>
                 </select>
                 <label>you are more of a</label>
                 <select name="pet">
@@ -59,7 +69,8 @@
                     <option value="female">woman</option>
                 </select>
                 <input type="submit" id="button" value="Find your match!" />
-            </form> 
+            </form>
+            {% endif %}
         </container> 
     </container>
 </container>
