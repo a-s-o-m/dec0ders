@@ -22,7 +22,7 @@
 .main-container button {
   background-color: rgb(255, 255, 255, 0);
   border: none;
-  font-size: 10em;
+  font-size: 8em;
   font-weight: bold;
   color: rgb(255, 255, 255, 0.2);
   /* text-shadow: -1px 0 var(--nav-color), 0 1px var(--nav-color), 1px 0 var(--nav-color), 0 1px var(--nav-color); */

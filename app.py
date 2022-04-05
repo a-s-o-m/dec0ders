@@ -1,7 +1,6 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
-from model import User
-from model import catalog
+from model import User, catalog, from_document_to_companion
 import secrets
 import os
 
@@ -55,14 +54,19 @@ def match_test():
         pref_sex = request.form['sex']
         
         max_score = -1
-        for companion in catalog:
-            score = companion.calculate_match(pref_age, pref_height, pref_personality, pref_pet, pref_sex)
-            if score > max_score and companion.sex == pref_sex:
-                best_match = companion
-                max_score = score
+        for companion in companions.find():
+            current_companion = from_document_to_companion(companion)
+            score = current_companion.calculate_match(pref_age, pref_height, pref_personality, pref_pet, pref_sex)
 
-        best_match = companions.find_one({"name":best_match.name})
-
+            if score > max_score:
+                if pref_sex == 'other':
+                    best_match = companion
+                    max_score = score
+                    
+                elif pref_sex == current_companion.sex:
+                    best_match = companion
+                    max_score = score
+                        
         return render_template('match-test.html', new_user=new_user, companion=best_match)   
     else:
         return render_template('match-test.html', new_user=new_user)
