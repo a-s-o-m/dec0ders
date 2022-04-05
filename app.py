@@ -61,11 +61,16 @@ def match_test():
         max_score = -1
         for companion in catalog:
             score = companion.calculate_match(pref_age, pref_height, pref_personality, pref_pet, pref_sex)
-            if score > max_score and companion.sex == pref_sex:
 
-                best_match = companion
-                max_score = score
-
+            if score > max_score:
+                if pref_sex == 'other':
+                    best_match = companion
+                    max_score = score
+                else:
+                    if companion.sex == pref_sex:
+                        best_match = companion
+                        max_score = score
+                        
         best_match = companions.find_one({"name":best_match.name})
 
         return render_template('match-test.html', new_user=new_user, companion=best_match)   

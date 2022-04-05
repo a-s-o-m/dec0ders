@@ -96,7 +96,7 @@ class Companion:
         if pref_height[0] > pref_height[1]: raise ValueError('pref_height: first value must be less than or equal to the second value')
         if pref_personality not in ['introvert','extrovert']: raise ValueError('pref_personality should be either "introvert" or "extrovert" (Case-insensitive).')
         if pref_pet not in ['dog','cat']: raise ValueError('pref_pet should be either "dog" or "cat" (Case-insensitive).')
-        if pref_sex not in ['male','female']: raise ValueError('pref_sex should be either "male" or "female" (Case-insensitive).')
+        if pref_sex not in ['male','female', 'other']: raise ValueError('pref_sex should be either "male","female" or "other  (Case-insensitive).')
 
         matches = 0
 
@@ -112,10 +112,10 @@ class Companion:
         if pref_pet == self.pet_preference:
             matches += 1
 
-        if pref_sex == self.sex:
+        if pref_sex == self.sex or pref_sex == 'other':
             matches += 1
 
-        return matches / (0.05)
+        return matches / 5
 
 class CompanionCatalog:
     def __init__(self):
