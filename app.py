@@ -66,10 +66,10 @@ def match_test():
                 if pref_sex == 'other':
                     best_match = companion
                     max_score = score
-                else:
-                    if companion.sex == pref_sex:
-                        best_match = companion
-                        max_score = score
+                    
+                elif pref_sex == companion.sex:
+                    best_match = companion
+                    max_score = score
                         
         best_match = companions.find_one({"name":best_match.name})
 
