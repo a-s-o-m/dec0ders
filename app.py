@@ -65,7 +65,7 @@ def signup():
             # users.insert_one({'name': username, 'password': hashed})
             #store username in session
             session['username'] = request.form['username']
-            return redirect(url_for('index'))
+            return redirect(url_for('home'))
 
         else:
             return 'Username already registered.  Try logging in.'
