@@ -74,13 +74,14 @@ class User:
             'password': self.password,
         }
     
-    def from_document(self, document):
-        self.firstname = document['firstname']
-        self.lastname = document['lastname']
-        self.username = document['username']
-        self.email = document['email']
-        self.phone_number = document['phone_number']
-        self.password = document['password']
+    @classmethod
+    def from_document(cls, document):
+        cls.firstname = document['firstname']
+        cls.lastname = document['lastname']
+        cls.username = document['username']
+        cls.email = document['email']
+        cls.phone_number = document['phone_number']
+        cls.password = document['password']
 
 class Companion:
     def __init__(self, name: str, age: int, height: float, personality: str, pet_preference: str, sex: str, picture: str, description: str):

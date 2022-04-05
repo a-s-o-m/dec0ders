@@ -82,7 +82,10 @@ def signup():
         
         #if user not in database
         if not existing_user:
-            user = User(request.form['firstname'], request.form['lastname'], f"@{request.form['username']}", request.form['email'], request.form['phone_number'], request.form['password'])
+            try:
+                user = User(request.form['firstname'], request.form['lastname'], f"@{request.form['username']}", request.form['email'], request.form['phone_number'], request.form['password'])
+            except Exception as err:
+                return render_template('signup.html', error=err)
             #add new user to database
             users.insert_one(user.to_document())
             #store username in session
@@ -90,7 +93,7 @@ def signup():
             global new_user 
             new_user = False
             return render_template('home.html', new_user=new_user)
-        return 'Username/Email already registered. Try logging in.'
+        return render_template('signup.html', error='Username/Email already registered. Try logging in.')
     return render_template('signup.html')
 #LOGIN Route
 @app.route('/login', methods=['GET', 'POST'])
@@ -105,9 +108,10 @@ def login():
             if login_user['password'] == request.form['password']:
                 global new_user 
                 new_user = False
+                user = User.from_document(login_user)
                 return render_template('home.html', new_user=new_user)
-            return 'Invalid username/password combination.'
-        return 'User not found.'
+            return render_template('login.html', error='Invalid username/password combination.')
+        return render_template('login.html', error='User not found.')
     return render_template('login.html')
 
 #browsing route
