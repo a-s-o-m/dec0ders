@@ -124,15 +124,15 @@ class CompanionCatalog:
         All companions listed below are ones we have initially had on our website for project 1
         Each companion should have a name, description of personality, pet preference, and sex
         '''
-        self.companions = [Companion('Dylan OBrien', 25, 200, 'extrovert','dog', 'male',"static/assets/man1.jpg", "" ),
-        Companion('Amy Wind', 24, 110, 'introvert', 'cat', 'female', "static/assets/woman1.jpg", ""),
-        Companion('Steve Johnson', 35, 250, 'extrovert','cat','male', "static/assets/man2.jpg", ""),
-        Companion('Stephanie Cheng', 30, 101, 'extrovert', 'cat', 'female', "static/assets/woman2.jpg", ""),
-        Companion('Cristiano Lopez', 32, 200, 'introvert', 'dog', 'male', "static/assets/men3.jpg", ""),
-        Companion('Helena Rios', 27, 175, 'introvert', 'dog', 'female', "static/assets/woman3.jpg", ""),
-        Companion('Kim Tae-hyung', 26, 200, 'introvert', 'dog', 'male', "static/assets/man4.jpg", ""),
-        Companion('Stephanie Pierce', 19, 120, 'extrovert', 'cat', 'female', "static/assets/woman4.jpg", ""),
-        Companion('Shyla Vihaan', 30, 205,'extrovert', 'cat', 'male', "static/assets/men5.jpg", "")] 
+        self.companions = [Companion('Dylan OBrien', 25, 200, 'extrovert','dog', 'male',"static/assets/man1.jpg", "Still lives at home with his parents, but  at least hes off the streets." ),
+        Companion('Amy Wind', 24, 110, 'introvert', 'cat', 'female', "static/assets/woman1.jpg", "Great at baking, but you have to wash the dishes."),
+        Companion('Steve Johnson', 35, 250, 'extrovert','cat','male', "static/assets/man2.jpg", "Can run a mile in 4 minutes, but he never shows up to a date on time."),
+        Companion('Stephanie Cheng', 30, 101, 'extrovert', 'cat', 'female', "static/assets/woman2.jpg", "Looks like a kitten. Snores like a lion."),
+        Companion('Cristiano Lopez', 32, 200, 'introvert', 'dog', 'male', "static/assets/men3.jpg", "Nice abs"),
+        Companion('Helena Rios', 27, 175, 'introvert', 'dog', 'female', "static/assets/woman3.jpg", "An aspiring dental student. She also is missing two teeth"),
+        Companion('Kim Tae-hyung', 26, 200, 'introvert', 'dog', 'male', "static/assets/man4.jpg", "Loves to sing and dance. Has commitment issues."),
+        Companion('Stephanie Pierce', 19, 120, 'extrovert', 'cat', 'female', "static/assets/woman4.jpg", "A cat lady, who is purrrrrfect."),
+        Companion('Shyla Vihaan', 30, 205,'extrovert', 'cat', 'male', "static/assets/men5.jpg", "The king of India, rich looking for a partner. Has a crazy mom")] 
 
     def addCompanion(self, new_companion):
         '''
