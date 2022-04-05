@@ -24,7 +24,7 @@ app.secret_key = secrets.token_urlsafe(16)
 # Comment out this create_collection method after you run the app for the first time
 # mongo.db.create_collection('library')
 new_user = True
-companions = seed_companions
+#companions = seed_companions
 # -- Routes section --
 # HOME Route
 @app.route('/')
