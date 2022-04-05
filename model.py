@@ -55,16 +55,6 @@ class Companion:
             "description": self.description,
         }
 
-    def from_document(self, document):
-        self.name = document["name"]
-        self.age = document["age"]
-        self.height = document["height"]
-        self.personality = document["type"]
-        self.pet_preference = document["animal"]
-        self.sex = document["gender"]
-        self.picture = document["pic"]
-        self.description = document["description"]
-
     def calculate_match(self, pref_age: [int], pref_height: [float], pref_personality: str, pref_pet: str, pref_sex: str) -> int:
         '''
         Calculates the match percentage to the current Companion object with the given arguments.
@@ -142,5 +132,18 @@ class CompanionCatalog:
         if (not isinstance(new_companion, Companion)):
             raise TypeError("new companion must be instance of Companion class")
         self.companions.append(new_companion) # add new companion to catalog 
+
+
+def from_document_to_companion(document):
+    name = document["name"]
+    age = (int)(document["age"])
+    height = (int)(document["height"])
+    personality = document["type"]
+    pet_preference = document["animal"]
+    sex = document["gender"]
+    picture = document["pic"]
+    description = document["description"]
+
+    return Companion(name, age, height, personality, pet_preference, sex, picture, description)
 
 catalog = CompanionCatalog().companions
