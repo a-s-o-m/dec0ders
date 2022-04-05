@@ -1,27 +1,23 @@
-var display1 = document.getElementById("caption1")
-var display2 = document.getElementById("caption2");
-var display3 = document.getElementById("caption3");
+var display1 = document.getElementById("display1")
+var display2 = document.getElementById("display2");
+var display3 = document.getElementById("display3");
 var currentDisplay = display1;
-var imageContainer = document.getElementById("main-container");
 
 function changeDisplayRight(){
     if(currentDisplay == display1){
         currentDisplay.classList.add("hidden");
         currentDisplay = display2;
         currentDisplay.classList.remove("hidden");
-        imageContainer.setAttribute("style", "background: url(../static/assets/display.jpg); background-size: 100%; background-repeat: no-repeat;");
     }
     else if(currentDisplay == display2){
         currentDisplay.classList.add("hidden");
         currentDisplay = display3;
         currentDisplay.classList.remove("hidden");
-        imageContainer.setAttribute("style", "background: url(../static/assets/display3.jpg); background-size: 100%; background-repeat: no-repeat;");
     }
     else{
         currentDisplay.classList.add("hidden");
         currentDisplay = display1;
         currentDisplay.classList.remove("hidden");
-        imageContainer.setAttribute("style", "background: url(../static/assets/display2.jpg); background-size: 100%; background-repeat: no-repeat;");
     }
 }
 function changeDisplayLeft(){
@@ -29,16 +25,15 @@ function changeDisplayLeft(){
         currentDisplay.classList.add("hidden");
         currentDisplay = display3;
         currentDisplay.classList.remove("hidden");
-        imageContainer.setAttribute("style", "background: url(../static/assets/display.jpg); background-size: 100%; background-repeat: no-repeat;");
     }
     else if(currentDisplay == display2){
         currentDisplay.classList.add("hidden");
         currentDisplay = display1;
         currentDisplay.classList.remove("hidden");
-        imageContainer.setAttribute("style", "background: url(../static/assets/display2.jpg); background-size: 100%; background-repeat: no-repeat;");    }
+    }
     else{
         currentDisplay.classList.add("hidden");
         currentDisplay = display2;
         currentDisplay.classList.remove("hidden");
-        imageContainer.setAttribute("style", "background: url(../static/assets/display3.jpg); background-size: 100%; background-repeat: no-repeat;");    }
+    }
 }

@@ -1,7 +1,7 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
-from seed_library import seed_companions
-from backend.user import User
+from model import User
+from model import catalog
 import secrets
 import os
 
@@ -21,20 +21,51 @@ mongo = PyMongo(app)
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
 
-# Comment out this create_collection method after you run the app for the first time
-# mongo.db.create_collection('library')
 new_user = True
-companions = seed_companions
+
 # -- Routes section --
 # HOME Route
 @app.route('/')
 @app.route('/home')
 def home():
+    # companions = mongo.db.companions
+
+    # for companion in catalog:
+    #     companions.insert_one(companion.to_document())
     return render_template('home.html', new_user=new_user)
+
 #MATCH TEST Route
 @app.route('/match-test', methods=['GET', 'POST'])
 def match_test():
-    return render_template('match-test.html')
+    if request.method == 'POST':
+        companions = mongo.db.companions
+
+        min_age = (int)(request.form["min_age"])
+        max_age = (int)(request.form["max_age"])
+        if min_age > max_age: min_age = max_age
+        pref_age = [min_age, max_age]
+
+        min_height = (int)(request.form["min_height"])
+        max_height = (int)(request.form["max_height"])
+        if min_height > max_height: min_height = max_height
+        pref_height = [min_height, max_height]
+
+        pref_personality = request.form["personality"]
+        pref_pet = request.form["pet"]
+        pref_sex = request.form['sex']
+        
+        max_score = -1
+        for companion in catalog:
+            score = companion.calculate_match(pref_age, pref_height, pref_personality, pref_pet, pref_sex)
+            if score > max_score and companion.sex == pref_sex:
+                best_match = companion
+                max_score = score
+
+        best_match = companions.find_one({"name":best_match.name})
+
+        return render_template('match-test.html', new_user=new_user, companion=best_match)   
+    else:
+        return render_template('match-test.html', new_user=new_user)
 
 #SIGNUP Route
 @app.route('/signup', methods=['GET', 'POST'])
@@ -47,76 +78,53 @@ def signup():
         
         #if user not in database
         if not existing_user:
-            firstname = request.form['firstname']
-            lastname = request.form['lastname']
-            username = request.form['username']
-            email = request.form['email']
-            phone_number = request.form['phone_number']
-            password = request.form['password']
-            user = User(firstname, lastname, username, email, phone_number, password)
-            #encode password for hashing
-            # password = request.form['password'].encode("utf-8")
-            # create new user
-
-            # #hash password
-            # salt = bcrypt.gensalt()
-            # hashed = bcrypt.hashpw(password, salt)
+            user = User(request.form['firstname'], request.form['lastname'], f"@{request.form['username']}", request.form['email'], request.form['phone_number'], request.form['password'])
             #add new user to database
-            # users.insert_one({'name': username, 'password': hashed})
+            users.insert_one(user.to_document())
             #store username in session
-            session['username'] = request.form['username']
-            return redirect(url_for('home'))
-
-        else:
-            return 'Username already registered.  Try logging in.'
-    
-    else:
-        return render_template('signup.html')
+            session['username'] = user.username
+            global new_user 
+            new_user = False
+            return render_template('home.html', new_user=new_user)
+        return 'Username/Email already registered. Try logging in.'
+    return render_template('signup.html')
 #LOGIN Route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
         users = mongo.db.users
         #search for username in database
-        login_user = users.find_one({'username': request.form['username']})
+        login_user = users.find_one({'username': f"@{request.form['username']}"})
 
         #if username in database
         if login_user:
-            db_password = login_user['password']
-            
-            #encode password
-            password = request.form['password'].encode("utf-8")
-            #compare username in database to username submitted in form
-            # if bcrypt.checkpw(password, db_password):
-            #     #store username in session
-            #     session['username'] = request.form['username']
-            #     return redirect(url_for('index'))
-            # else:
-            #     return 'Invalid username/password combination.'
-        else:
-            return 'User not found.'
-    else:
-        return render_template('login.html')
+            if login_user['password'] == request.form['password']:
+                global new_user 
+                new_user = False
+                return render_template('home.html', new_user=new_user)
+            return 'Invalid username/password combination.'
+        return 'User not found.'
+    return render_template('login.html')
 
 #browsing route
 @app.route('/browsing')
 def browsing():
-    #collection = mongo.db.library
-    return render_template('browsing.html', companions = companions, new_user = new_user) 
+    companions = mongo.db.companions
+    return render_template('browsing.html',new_user=new_user, companions = companions) 
 
 #static route
 @app.route('/<path:path>')
 def get_dir(path):
-    #collection = mongo.db.library
     #print("Hey now, your ", path) 
     return render_template(path) 
 
 # new companion route
-@app.route('/new_companion', methods = ['GET', 'POST'])
-def new_book():
+@app.route('/new-companion', methods = ['GET', 'POST'])
+def new_comp():
+    companions = mongo.db.companions
     if request.method == "GET":
         #render the form, with the companion list to populate the dropdown menu
-        return render_template('new_companion.html', companions = companions)
+        return render_template('new-companion.html', companions = companions)
     else:
         #assign form data to variables
         name = request.form['name']
@@ -126,16 +134,16 @@ def new_book():
         animal = request.form['animal']
         gender = request.form['gender']
         pic = request.form['pic']
-        
-        #retrieve username from session data if present
-        if session:
-            user = session['username']
-        else:
-            user = None
+        description = request.form['description']
+                
 
+        companions = mongo.db.library
+        
         #insert an entry to the database using the variables declared above
-        companions.append({"name":name, "age":age, "height":height, "type": type, "animal": animal, "gender": gender, "pic": pic})
-    return redirect('/')
+        companions.insert_one({"name":name, "age":age, "height":height, "type": type, "animal": animal, "gender": gender, "pic": pic, "description": description})
+
+        #redirect to the index route upon form submission
+        return redirect('/')
 # Adding function to run Flask by running current .py file
 if __name__=='__main__':
     app.run(debug=True)

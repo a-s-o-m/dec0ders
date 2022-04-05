@@ -19,12 +19,13 @@
     align-items: center;
     justify-content: space-evenly;
 }
-button {
+.main-container button {
   background-color: rgb(255, 255, 255, 0);
   border: none;
-  font-size: 4em;
+  font-size: 10em;
   font-weight: bold;
-  color: var(--secondary-color);
+  color: rgb(255, 255, 255, 0.2);
+  /* text-shadow: -1px 0 var(--nav-color), 0 1px var(--nav-color), 1px 0 var(--nav-color), 0 1px var(--nav-color); */
 }
 #left-button {
     margin-left: 1%;
@@ -33,37 +34,86 @@ button {
     margin-right: 1%;
 }
 button:hover {
-color: var(--accent-color);
+    color: white;
+    opacity: 0.8;
 }
-#main-container {
+.main-container {
     margin-bottom: 2%;
     height: 95%;
     width: 85%;
-    background: url(../assets/display2.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+#main-button {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5%;
+  font-size: 1.2em;
+  letter-spacing: .2em;
+  width:27%;
+  padding: 2%;
+  margin-top:2%;
+  font-weight: bold;
+  color: var(--logo-color);
+  text-shadow: none;
+}
+#main-button:hover {
+    border: 2px solid var(--logo-color);
+    opacity: 1;
+    transform: translateX(0);
+}
+#main-button:active {
+    border-color: var(--nav-color);
+    opacity: 1;
+    transform: translateY(2px);
+}
+#display1 {
+    background: url(../assets/display2.jpg);
+}
+#display2{
+    background: url(../assets/display.jpg);
 
-.caption-box {
-    background: rgb(255, 255, 255, 0.6);
-    border-radius: 1%;
-    font-family: 'Days One', sans-serif;
-    font-size: large;
-    height: 45%;
-    width: 40%;
-    text-align: center;
-    position: relative;
-    
+}
+#display3{
+    background: url(../assets/display3.jpg);
+}
+#display1, #display2, #display3 {
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
+.caption-box {
+    background: rgb(255, 255, 255, 0.9);
+    border-radius: 1%;
+    font-family: 'Raleway', sans-serif;
+    height: 45%;
+    width: 40%;
+    border: 1px solid #ccc;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    bottom: 10%;
+}
+h1 {
+    letter-spacing: .1em;
+}
+p {
+    font-size: large;
+}
+.caption-box h1, p {
+    color: var(--nav-color);
+    font-weight: bold;
+}
+.caption-box h1 {
+    font-size: 2.3em;
+}
 #caption1 h1 {
     margin: 10% 0 8% 0;
 }
 #caption1 p {
+    font-size: 1.4em;
     margin-bottom: 2%;
 }
 #caption2 h1 {
@@ -73,21 +123,15 @@ color: var(--accent-color);
     margin-bottom: 1.5%;
 }
 #caption3 h1 {
-    margin: 7% 0 7% 0;
+    margin: 5% 0 3% 0;
 }
 #caption3 p {
+    font-size: 1.2em;
     margin-bottom: 2%;
 }
 .caption-box span {
     color: var(--logo-color);
 }
-/* .page-indicators {
-    display: flex;
-    height: 1%;
-}
-.indicator {
-    color: var(--accent-color);
-} */
 
 /* Elements */
 .hidden {

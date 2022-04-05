@@ -7,31 +7,70 @@
 <container class="main-body">
     <container id="main-container">
         <container class="test-box">
+            {% if companion %}
+            <p id="result-title">Our recommendation:</p>
+            <img class="profile_pic" src={{companion.pic}}>
+            <container class = "result-information">
+                <p id="name">{{companion.name}}</p>
+                <p><span>{{companion.age}}</span> years old, <span>{{companion.height}}</span> cm tall</p>
+                <p>{{companion.type}}ed, <span>{{companion.animal}}</span> lover </p>
+                <p id="description">{{companion.description}}</p>
+            </container> 
+            {% else %}
             <form method="POST" action="/match-test">
                 <h1>Find your perfect date!</h1>
-                <label>Preferred age range</label>
-                <input type="text" name="min_age" placeholder="Min Age"/> 
-                <input type="text" name="max_age" placeholder="Max Age"/>
-                <label>Preferred height range (cm)</label>
-                <input type="text" name="min_age" placeholder="Min Age"/> 
-                <input type="text" name="max_age" placeholder="Max Age"/>
-                <label>Preferred personality type</label>
+                <label>preferred age</label>
+                <container class="dropdown">
+                    <p>min</p>
+                <select id="many_opt" name="min_age">
+                    {% for n in range(18, 81) %}
+                    <option value="{{ n }}">{{ n }}</option>
+                    {% endfor %}
+                </select>
+                </container>
+                <container class ="dropdown">
+                    <p>max</p>
+                    <select id="many_opt" name="max_age">
+                        {% for n in range(18, 81) %}
+                        <option value="{{ n }}">{{ n }}</option>
+                        {% endfor %}
+                    </select>
+                </container>
+                <label>preferred height</label>
+               <container class="dropdown">
+                <p>min</p>
+                <select id="many_opt" name="min_height">
+                    {% for n in range(100, 271) %}
+                    <option value="{{ n }}">{{ n }} cm</option>
+                    {% endfor %}
+                </select>
+               </container>
+               <container class="dropdown">
+                <p>max</p>
+                <select id="many_opt" name="max_height">
+                    {% for n in range(100, 271) %}
+                    <option value="{{ n }}">{{ n }} cm</option>
+                    {% endfor %}
+                </select>
+               </container> 
+                <label>preferred personality</label>
                 <select name="personality">
-                    <option value="introverted">Introverted</option>
-                    <option value="extroverted">Extroverted</option>
+                    <option value="introvert">introverted</option>
+                    <option value="extrovert">extroverted</option>
                 </select>
-                <label>You are more of a</label>
+                <label>you are more of a</label>
                 <select name="pet">
-                    <option value="cat">Cat Person</option>
-                    <option value="dog">Dog Person</option>
+                    <option value="cat">cat person</option>
+                    <option value="dog">dog person</option>
                 </select>
-                <label>You are looking for</label>
+                <label>you are looking for a</label>
                 <select name="sex">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="male">man</option>
+                    <option value="female">woman</option>
                 </select>
-                <input type="submit" id="button" value="Find your match" />
-            </form> 
+                <input type="submit" id="button" value="Find your match!" />
+            </form>
+            {% endif %}
         </container> 
     </container>
 </container>

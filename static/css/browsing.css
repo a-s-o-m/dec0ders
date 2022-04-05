@@ -60,9 +60,9 @@ html, body {
   } */
   /* Elements */
   
-  /* a, a:visited {
+  a, a:visited {
     text-decoration: none;
-  } */
+  }
   .categories {
     max-width: 1080px;
     margin: auto;
