@@ -50,8 +50,6 @@ a, a:visited {
     border: 1px solid #ccc;
     border-radius: 1%;
     text-align: center;
-    padding: 1%;
-    
 }
 .test-box h1, label {
     display: block;
@@ -72,7 +70,7 @@ label {
 .new_comp {
     color: var(--nav-color);
     font-weight: bold;
-    letter-spacing: .1em;
+    letter-spacing: .08em;
     margin: 2.5% 0 2.5% 0;
 }
 
@@ -156,6 +154,7 @@ option {
     font-weight: normal;
     font-size: 1.1em;
     margin-top: 5%;
+    padding: 2%
 }
 #name {
     color: var(--logo-color);
