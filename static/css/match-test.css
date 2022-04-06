@@ -28,7 +28,18 @@ a, a:visited {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+}
+#main-container2 {
+    margin-bottom: 2%;
+    height: 95%;
+    width: 85%;
+    background: none;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .test-box {
     background: rgb(255, 255, 255, 0.9);
@@ -57,6 +68,12 @@ label {
     font-weight: bold;
     letter-spacing: .2em;
     margin: 4% 0 4% 0;
+}
+.new_comp {
+    color: var(--nav-color);
+    font-weight: bold;
+    letter-spacing: .1em;
+    margin: 2.5% 0 2.5% 0;
 }
 
 input {
@@ -144,4 +161,7 @@ option {
     color: var(--logo-color);
     font-size: 1.5em;
     margin-bottom: 4%;
+}
+.button2 {
+    margin: 4% 0 4% 0;
 }

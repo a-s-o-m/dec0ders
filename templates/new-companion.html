@@ -1,39 +1,45 @@
-<!DOCTYPE html>
+{% extends "nav-bar.html" %}
+{% block css %}
+<link href="{{ url_for('static', filename='css/match-test.css')}}" rel='stylesheet' type='text/css'">
+{% endblock css %}
+{% block body %}
 
-<html>
-    <head>
-        <title>Apply to become a companion!</title>
-    </head>
-    <body>
-        <h1>Apply to become a companion!</h1>
+<container class="main-body">
+    <container id="main-container2">
+        <container class="test-box">
+            <p id="result-title">Become a companion!</p>
         <form method="post" action="/new-companion">
-            <label for="name">Enter Name:</label>
+            <label class='new_comp' for="name">Enter Name:</label>
             <input type="text" name="name" value="">
 
-            <label for="age">Enter age:</label>
+            <label class='new_comp'  for="age">Enter age:</label>
             <input type="number" name="age" value="">
 
-            <label for="height">Enter height in cm:</label>
+            <label class='new_comp'  for="height">Enter height in cm:</label>
             <input type="number" name="height" value="">
 
-            <label for="type">Enter personality-type(introvert or extrovert):</label>
+            <label class='new_comp'  for="type">Enter personality-type(introvert or extrovert):</label>
             <input type="text" name="type" value="">
 
-            <label for="animal">Enter animal preference(cat or dog):</label>
+            <label class='new_comp'  for="animal">Enter animal preference(cat or dog):</label>
             <input type="text" name="animal" value="">
 
-            <label for="gender">Enter gender(male or female):</label>
+            <label class='new_comp'  for="gender">Enter gender(male or female):</label>
             <input type="text" name="gender" value="">
 
-            <label for="pic">Enter a picture:</label>
+            <label class='new_comp'  for="pic">Enter a picture:</label>
             <input type="text" name="pic" value="">
 
-            <input type="submit" value="Submit">
+            <label class='new_comp'  for="description">Describe yourself:</label>
+            <input type="text" name="description" value="">
+
+            <input class="button2" type="submit" value="Submit">
         </form>
         <p><a href="/">Cancel</a></p>
         {% if session %}
           <p>Logged in as {{ session['username'] }}</p>
         {% endif %}
-
-    </body>
-</html>
+        </container> 
+    </container>
+</container>
+{% endblock body %}
