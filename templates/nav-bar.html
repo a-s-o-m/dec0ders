@@ -91,10 +91,10 @@
                 <a class="nav-caption" href="/browsing">browse</a>
                 </h2>
                 <h2>
-                {% if new_user == null or new_user%}
+                {% if not new_user%}
                 <a class="nav-caption" href="/signup">sign up</a>
                 {% else %}
-                <a class="nav-caption" href="/account">account</a>
+                <a class="nav-caption" >{{new_user.username[1:]}}</a>
                 {% endif %}
                 </h2>
             </container>

@@ -9,7 +9,7 @@
         <container class="test-box">
             {% if companion %}
             <p id="result-title">Our recommendation:</p>
-            <img class="profile_pic" src={{companion.pic}}>
+            <a href='/browsing'><img class="profile_pic" src={{companion.pic}}></a>
             <container class = "result-information">
                 <p id="name">{{companion.name}}</p>
                 <p><span>{{companion.age}}</span> years old, <span>{{companion.height}}</span> cm tall</p>
