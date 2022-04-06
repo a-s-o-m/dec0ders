@@ -1,4 +1,5 @@
 {% extends "nav-bar.html" %}
+
 {% block css %}
 <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/browsing.css') }}">
 {% endblock css %}
@@ -7,6 +8,9 @@
             <div class = "grid">
                 <div class = "categories">
                     <h2 class = "title">Featured Partners</h2>
+                    <h2>
+                        <a class="nav-caption" href="/new-companion">Register</a>
+                    </h2>
                     <div class = "row">
                         {% for companion in companions.find() %}
                         <div class = "col">

@@ -73,7 +73,7 @@
         <nav class="nav-bar">
             <container class="nav-left-block">
                 <h2>
-                    <a class="nav-caption" href="about-us.html">contact</a>
+                    <a class="nav-caption" href="/about-us">contact</a>
                 </h2>
                 <h2>
                     <a class="nav-caption" id="nav-caption-large" href="/match-test">find your match</a>
@@ -91,10 +91,10 @@
                 <a class="nav-caption" href="/browsing">browse</a>
                 </h2>
                 <h2>
-                {% if not new_user%}
+                {% if not logged_in_user%}
                 <a class="nav-caption" href="/signup">sign up</a>
                 {% else %}
-                <a class="nav-caption" >{{new_user.username[1:]}}</a>
+                <a class="nav-caption" >{{logged_in_user.username}}</a>
                 {% endif %}
                 </h2>
             </container>

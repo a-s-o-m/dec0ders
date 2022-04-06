@@ -144,3 +144,10 @@ Elements
 .card-img-top {
     width: 100%;
 }
+
+.nav-caption {
+    text-align: center;
+    margin: 80 auto 100px;
+    position: left;
+    line-height: 40px;
+}
