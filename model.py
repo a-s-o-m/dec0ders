@@ -87,7 +87,6 @@ class Companion:
     def __init__(self, name: str, age: int, height: float, personality: str, pet_preference: str, sex: str, picture: str, description: str):
         '''
         Holds the information for the rentable dates
-
         Arguments:
         name: Between 2 and 30 characters long.
         age: Between 18 and 100.
@@ -143,14 +142,12 @@ class Companion:
     def calculate_match(self, pref_age: [int], pref_height: [float], pref_personality: str, pref_pet: str, pref_sex: str) -> int:
         '''
         Calculates the match percentage to the current Companion object with the given arguments.
-
         Arguments:
         pref_age:  a list of two int values, represents the user's preferred age range (18-100). Values are inclusive.
         pref_height:  a list of two float values, represents the user's preferred height range in centimeters (100-270). Values are inclusive.
         pref_personality:  a str representing the user's preferred personality; "Introverted" or "Extroverted". Case-insensitve.
         pref_pet:  a str representing the user's preferred Companion's pet preference; "Dog" or "Cat". Case-insensitive.
         pref_sex:  a str representing the user's preferred Companion's sex; "Male" or "Female". Case-insensitive.
-
         Returns an int value representing the match percentage. e.g, 20, 80, 100
         '''
 
