@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
 
-new_user = True
+new_user = None
 
 # -- Routes section --
 # HOME Route
