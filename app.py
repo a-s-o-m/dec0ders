@@ -147,12 +147,12 @@ def get_dir(path):
     return render_template(path) 
 
 # new companion route
-@app.route('/new_companion', methods = ['GET', 'POST'])
+@app.route('/new-companion', methods = ['GET', 'POST'])
 def new_comp():
     companions = mongo.db.companions
     if request.method == "GET":
         #render the form, with the companion list to populate the dropdown menu
-        return render_template('new_companion.html', companions = companions)
+        return render_template('new-companion.html', companions = companions)
     else:
         #assign form data to variables
         name = request.form['name']
