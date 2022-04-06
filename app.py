@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
 
-new_user = None
+logged_in_user = None
 
 # -- Routes section --
 # HOME Route
@@ -31,7 +31,7 @@ def home():
 
     # for companion in catalog:
     #     companions.insert_one(companion.to_document())
-    return render_template('home.html', new_user=new_user)
+    return render_template('home.html', logged_in_user=logged_in_user)
 
 #MATCH TEST Route
 @app.route('/match-test', methods=['GET', 'POST'])
@@ -67,9 +67,9 @@ def match_test():
                     best_match = companion
                     max_score = score
                         
-        return render_template('match-test.html', new_user=new_user, companion=best_match)   
+        return render_template('match-test.html', logged_in_user=logged_in_user, companion=best_match)   
     else:
-        return render_template('match-test.html', new_user=new_user)
+        return render_template('match-test.html', logged_in_user=logged_in_user)
 
 #SIGNUP Route
 @app.route('/signup', methods=['GET', 'POST'])
@@ -89,12 +89,12 @@ def signup():
             #add new user to database
             users.insert_one(user.to_document())
             #store username in session
-            session['username'] = user.username
-            global new_user 
-            new_user = user
-            return render_template('home.html', new_user=new_user)
+            global logged_in_user 
+            logged_in_user = user.to_document()
+            return render_template('home.html', logged_in_user=logged_in_user)
         return render_template('signup.html', error='Username/Email already registered. Try logging in.')
     return render_template('signup.html')
+
 #LOGIN Route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -106,10 +106,10 @@ def login():
         #if username in database
         if login_user:
             if login_user['password'] == request.form['password']:
-                global new_user 
-                new_user = login_user
-                user = User.from_document(login_user)
-                return render_template('home.html', new_user=new_user)
+                global logged_in_user 
+                logged_in_user = login_user
+                # user = User.from_document(login_user)
+                return render_template('home.html', logged_in_user=logged_in_user)
             return render_template('login.html', error='Invalid username/password combination.')
         return render_template('login.html', error='User not found.')
     return render_template('login.html')
@@ -118,7 +118,12 @@ def login():
 @app.route('/browsing')
 def browsing():
     companions = mongo.db.companions
-    return render_template('browsing.html',new_user=new_user, companions = companions) 
+    return render_template('browsing.html',logged_in_user=logged_in_user, companions = companions) 
+
+#about-us route
+@app.route('/about-us')
+def about_us():
+    return render_template('about-us.html',logged_in_user=logged_in_user)
 
 #static route
 @app.route('/<path:path>')
