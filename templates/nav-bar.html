@@ -41,15 +41,22 @@
             .logo-font{
                 font-family: 'Yellowtail', cursive;
                 font-weight: 700;
+                text-shadow: -1px 0 var(--nav-color), 0 1px var(--nav-color), 1px 0 var(--nav-color), 0 1px var(--nav-color);
                 color: var(--logo-color);
                 letter-spacing: .1em;
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
             .nav-caption{
                 font-family: 'Raleway', sans-serif;
                 color: var(--nav-color);
                 letter-spacing: .2em;
                 font-size: 1.1em;
+            }
+            .nav-caption:hover {
+                color: var(--accent-color);
+            }
+            #nav-caption-large {
+                letter-spacing: 0.15em;
             }
             .logo {
                 display: flex;
@@ -66,10 +73,10 @@
         <nav class="nav-bar">
             <container class="nav-left-block">
                 <h2>
-                    <a class="nav-caption" href="/about-us-page">contact</a>
+                    <a class="nav-caption" href="about-us.html">contact</a>
                 </h2>
                 <h2>
-                    <a class="nav-caption" href="/match-test">find your match</a>
+                    <a class="nav-caption" id="nav-caption-large" href="/match-test">find your match</a>
                 </h2>
             </container>
             <container class="logo">
@@ -84,7 +91,7 @@
                 <a class="nav-caption" href="/browsing">browse</a>
                 </h2>
                 <h2>
-                {% if new_user %}
+                {% if new_user == null or new_user%}
                 <a class="nav-caption" href="/signup">sign up</a>
                 {% else %}
                 <a class="nav-caption" href="/account">account</a>

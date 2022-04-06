@@ -1,58 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rent-A-Date</title>
-        <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='browsing.css') }}">
-    </head>
-    <body>
+{% extends "nav-bar.html" %}
+{% block css %}
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/browsing.css') }}">
+{% endblock css %}
+{% block body %}
         <div class = "container" id = "topdiv6">
-            <nav class="nav-bar">
-                <container class="nav-left-block">
-                    <h2>
-                        <a class="nav-caption" href="/about-us-page">contact</a>
-                    </h2>
-                    <h2>
-                        <a class="nav-caption" href="/match-test">find your match</a>
-                    </h2>
-                </container>
-                
-                <container class="logo">
-                    <h1>
-                        <a href="/"><span class="logo-font" >Rent-A-Date</span></a>
-                    </h1>
-                    <img class="logo-img" src="{{ url_for('static', filename='/assets/logo5.png')}}">
-                </container>
-    
-                <container class="nav-right-block">
-                    <h2>
-                        <a class="nav-caption" href="/browsing">browse</a>
-                    </h2>
-                    <h2>
-                        {% if new_user %}
-                            <a class="nav-caption" href="/signup">sign up</a>
-                        {% else %}
-                            <a class="nav-caption" href="/account">account</a>
-                        {% endif %}
-                    </h2>
-                </container>
-            </nav>
             <div class = "grid">
                 <div class = "categories">
                     <h2 class = "title">Featured Partners</h2>
                     <div class = "row">
-                        {% for companion in companions %}
+                        {% for companion in companions.find() %}
                         <div class = "col">
                             <div class="card needspace" style="width: 18rem;">
                                 <img src= {{companion.pic}} class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Companion Name: {{companion.name}}</h5>
                                     <p class="card-text">Age: {{companion.age}}</p>
-                                    <p class="card-text">Height: {{companion.height}}</p>
+                                    <p class="card-text">Height: {{companion.height}} cm</p>
                                     <p class="card-text">Type: {{companion.type}}</p>
                                     <p class="card-text">Animal: {{companion.animal}}</p>
                                     <p class="card-text">Gender: {{companion.gender}}</p>
+                                    <p class = "card-text">Description: {{companion.description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +30,5 @@
         
             </div>
         </div>
-        
-    </body>
-</html>
+{% endblock body %}
     

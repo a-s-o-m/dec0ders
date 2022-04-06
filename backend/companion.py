@@ -41,7 +41,7 @@ class Companion:
         self.sex = sex
         self.description = '' # To be initialized by the set_description method.
 
-
+    
     def calculate_match(self, pref_age: [int], pref_height: [float], pref_personality: str, pref_pet: str, pref_sex: str) -> int:
         '''
         Calculates the match percentage to the current Companion object with the given arguments.

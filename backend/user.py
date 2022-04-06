@@ -1,4 +1,5 @@
 import re
+
 from companion import Companion
 
 class User:
