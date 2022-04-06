@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
 
-new_user = True
+new_user = None
 
 # -- Routes section --
 # HOME Route
@@ -91,7 +91,7 @@ def signup():
             #store username in session
             session['username'] = user.username
             global new_user 
-            new_user = False
+            new_user = user
             return render_template('home.html', new_user=new_user)
         return render_template('signup.html', error='Username/Email already registered. Try logging in.')
     return render_template('signup.html')
@@ -107,7 +107,7 @@ def login():
         if login_user:
             if login_user['password'] == request.form['password']:
                 global new_user 
-                new_user = False
+                new_user = user
                 user = User.from_document(login_user)
                 return render_template('home.html', new_user=new_user)
             return render_template('login.html', error='Invalid username/password combination.')
