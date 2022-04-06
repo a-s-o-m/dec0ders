@@ -1,6 +1,6 @@
 import re
 
-from backend.companion import Companion
+from companion import Companion
 
 class User:
     def __init__(self, firstname, lastname, username, email, phone_number, password):

@@ -1,3 +1,88 @@
+import re
+
+class User:
+    def __init__(self, firstname, lastname, username, email, phone_number, password):
+        str_params = [firstname, lastname, username, email, phone_number, password]
+        
+        for parameter in str_params:
+            if type(parameter) != str: 
+                raise TypeError(f'{parameter} must be a string.')
+
+        if len(firstname.split()) > 1:
+            raise ValueError('only input your firstname here')
+        elif not firstname.isalpha():
+            raise ValueError('your firstname should not contain a number')
+
+        if len(lastname.split()) > 1:
+            raise ValueError('only input your lastname here')
+        elif not lastname.isalpha():
+            raise ValueError('your lastname should not contain a number')
+
+        if len(username) < 3:
+            raise ValueError('username should be at least 3 characters')
+        # elif '@' in username:
+        #     raise ValueError('username should not contain @ symbol as it will be added afterwards by our system')
+
+        if not self.validate_email(email):
+            raise ValueError('email address is not valid')
+
+        if len(phone_number) > 10:
+            raise ValueError('US phone numbers only')
+        elif len(phone_number) < 10:
+            raise ValueError('phone number cannot be less than 10 numbers')
+        elif not phone_number.isnumeric():
+            raise ValueError('phone number contains characters that are not numbers')
+
+        if len(password) < 5:
+            raise ValueError('password should be at least 5 characters')
+
+        self.firstname = firstname
+        self.lastname = lastname
+        self.username = username
+        self.email = email
+        self.phone_number = phone_number
+        self.password = password
+        self.fullname = f'{self.firstname} {self.lastname}'
+        self.companion_account = None
+
+    def become_companion(self, companion_config):
+        # prompt companion cli
+        # create companion account for user
+        if (not isinstance(companion_config, Companion)):
+            raise TypeError('account must be instance of Companion class')
+        self.companion_account = companion_config
+    
+    def is_companion(self):
+        if self.companion_account == None:
+            return False
+        return True
+
+    def validate_email(self, email):
+        regex = re.compile(r'[^@]+@[^@]+\.[^@]+')
+        if regex.match(email):
+            return True
+        else:
+            return False
+
+    def to_document(self):
+        return {
+            'firstname': self.firstname,
+            'lastname' : self.lastname,
+            'username': self.username,
+            'email': self.email,
+            'phone_number': self.phone_number,
+            'password': self.password,
+        }
+    
+    @classmethod
+    def from_document(cls, document):
+        cls.firstname = document['firstname']
+        cls.lastname = document['lastname']
+        cls.username = document['username']
+        cls.email = document['email']
+        cls.phone_number = document['phone_number']
+        cls.password = document['password']
+
 class Companion:
     def __init__(self, name: str, age: int, height: float, personality: str, pet_preference: str, sex: str, picture: str, description: str):
         '''
@@ -55,16 +140,6 @@ class Companion:
             "description": self.description,
         }
 
-    def from_document(self, document):
-        self.name = document["name"]
-        self.age = document["age"]
-        self.height = document["height"]
-        self.personality = document["type"]
-        self.pet_preference = document["animal"]
-        self.sex = document["gender"]
-        self.picture = document["pic"]
-        self.description = document["description"]
-
     def calculate_match(self, pref_age: [int], pref_height: [float], pref_personality: str, pref_pet: str, pref_sex: str) -> int:
         '''
         Calculates the match percentage to the current Companion object with the given arguments.
@@ -96,7 +171,7 @@ class Companion:
         if pref_height[0] > pref_height[1]: raise ValueError('pref_height: first value must be less than or equal to the second value')
         if pref_personality not in ['introvert','extrovert']: raise ValueError('pref_personality should be either "introvert" or "extrovert" (Case-insensitive).')
         if pref_pet not in ['dog','cat']: raise ValueError('pref_pet should be either "dog" or "cat" (Case-insensitive).')
-        if pref_sex not in ['male','female']: raise ValueError('pref_sex should be either "male" or "female" (Case-insensitive).')
+        if pref_sex not in ['male','female', 'other']: raise ValueError('pref_sex should be either "male","female" or "other  (Case-insensitive).')
 
         matches = 0
 
@@ -112,10 +187,10 @@ class Companion:
         if pref_pet == self.pet_preference:
             matches += 1
 
-        if pref_sex == self.sex:
+        if pref_sex == self.sex or pref_sex == 'other':
             matches += 1
 
-        return matches / (0.05)
+        return matches / 5
 
 class CompanionCatalog:
     def __init__(self):
@@ -142,5 +217,18 @@ class CompanionCatalog:
         if (not isinstance(new_companion, Companion)):
             raise TypeError("new companion must be instance of Companion class")
         self.companions.append(new_companion) # add new companion to catalog 
+
+
+def from_document_to_companion(document):
+    name = document["name"]
+    age = (int)(document["age"])
+    height = (int)(document["height"])
+    personality = document["type"]
+    pet_preference = document["animal"]
+    sex = document["gender"]
+    picture = document["pic"]
+    description = document["description"]
+
+    return Companion(name, age, height, personality, pet_preference, sex, picture, description)
 
 catalog = CompanionCatalog().companions

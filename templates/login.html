@@ -14,19 +14,23 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/auth.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/auth.css') }}">
+    <a href="home.html">
+        <div class="title-container" style="display:flex;">
+          <p class="font-logo">Rent-A-Date</p>
+          <img class="logo" src="{{ url_for('static', filename='assets/logo5.png')}}" height="80px">
+        </div>
+    </a>
 </head>
 <body>
-    <h1>Log In</h1>
+    <h1></h1>
     <form method="POST" action="/login">
         <input type="text" name="username" placeholder="username" /> <br>
         <input type="text" name="password" placeholder="password" /><br>
         <input type="submit" id="button" value="Login" />
     </form>
-    <p><a href="/">Cancel</a></p>
+    <h2>{{error}}</h1>
 </body>
 </html>

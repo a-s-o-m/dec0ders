@@ -1,7 +1,6 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, session, url_for
-from backend.user import User
-from model import catalog
+from model import User, catalog, from_document_to_companion
 import secrets
 import os
 
@@ -21,10 +20,7 @@ mongo = PyMongo(app)
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
 
-# Comment out this create_collection method after you run the app for the first time
-# mongo.db.create_collection('library')
 new_user = True
-
 
 # -- Routes section --
 # HOME Route
@@ -35,7 +31,6 @@ def home():
 
     # for companion in catalog:
     #     companions.insert_one(companion.to_document())
-
     return render_template('home.html', new_user=new_user)
 
 #MATCH TEST Route
@@ -59,15 +54,19 @@ def match_test():
         pref_sex = request.form['sex']
         
         max_score = -1
-        for companion in catalog:
-            score = companion.calculate_match(pref_age, pref_height, pref_personality, pref_pet, pref_sex)
-            if score > max_score and companion.sex == pref_sex:
+        for companion in companions.find():
+            current_companion = from_document_to_companion(companion)
+            score = current_companion.calculate_match(pref_age, pref_height, pref_personality, pref_pet, pref_sex)
 
-                best_match = companion
-                max_score = score
-
-        best_match = companions.find_one({"name":best_match.name})
-
+            if score > max_score:
+                if pref_sex == 'other':
+                    best_match = companion
+                    max_score = score
+                    
+                elif pref_sex == current_companion.sex:
+                    best_match = companion
+                    max_score = score
+                        
         return render_template('match-test.html', new_user=new_user, companion=best_match)   
     else:
         return render_template('match-test.html', new_user=new_user)
@@ -83,56 +82,37 @@ def signup():
         
         #if user not in database
         if not existing_user:
-            firstname = request.form['firstname']
-            lastname = request.form['lastname']
-            username = request.form['username']
-            email = request.form['email']
-            phone_number = request.form['phone_number']
-            password = request.form['password']
-            user = User(firstname, lastname, username, email, phone_number, password)
-            #encode password for hashing
-            # password = request.form['password'].encode("utf-8")
-            # create new user
-
-            # #hash password
-            # salt = bcrypt.gensalt()
-            # hashed = bcrypt.hashpw(password, salt)
+            try:
+                user = User(request.form['firstname'], request.form['lastname'], f"@{request.form['username']}", request.form['email'], request.form['phone_number'], request.form['password'])
+            except Exception as err:
+                return render_template('signup.html', error=err)
             #add new user to database
-            # users.insert_one({'name': username, 'password': hashed})
+            users.insert_one(user.to_document())
             #store username in session
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-
-        else:
-            return 'Username already registered.  Try logging in.'
-    
-    else:
-        return render_template('signup.html')
+            session['username'] = user.username
+            global new_user 
+            new_user = False
+            return render_template('home.html', new_user=new_user)
+        return render_template('signup.html', error='Username/Email already registered. Try logging in.')
+    return render_template('signup.html')
 #LOGIN Route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
         users = mongo.db.users
         #search for username in database
-        login_user = users.find_one({'username': request.form['username']})
+        login_user = users.find_one({'username': f"@{request.form['username']}"})
 
         #if username in database
         if login_user:
-            db_password = login_user['password']
-            
-            #encode password
-            password = request.form['password'].encode("utf-8")
-            #compare username in database to username submitted in form
-            # if bcrypt.checkpw(password, db_password):
-            #     #store username in session
-            #     session['username'] = request.form['username']
-            #     return redirect(url_for('index'))
-            # else:
-            #     return 'Invalid username/password combination.'
-        else:
-            return 'User not found.'
-    else:
-        return render_template('login.html')
+            if login_user['password'] == request.form['password']:
+                global new_user 
+                new_user = False
+                user = User.from_document(login_user)
+                return render_template('home.html', new_user=new_user)
+            return render_template('login.html', error='Invalid username/password combination.')
+        return render_template('login.html', error='User not found.')
+    return render_template('login.html')
 
 #browsing route
 @app.route('/browsing')
@@ -163,7 +143,7 @@ def new_comp():
         gender = request.form['gender']
         pic = request.form['pic']
         description = request.form['description']
-        
+                
 
         companions = mongo.db.library
         

@@ -13,15 +13,19 @@
 -->
 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/auth.css') }}">
-    <title>Log In</title>
-</head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Sign Up</title>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/auth.css') }}">
+            <a href="home.html">
+                <div class="title-container" style="display:flex;">
+                  <p class="font-logo">Rent-A-Date</p>
+                  <img class="logo" src="{{ url_for('static', filename='assets/logo5.png')}}" height="80px">
+                </div>
+            </a>
+    </head>
 <body>
-    <h1>Sign Up</h1>
+    <h1></h1>
     <form method="POST" action="/signup">
         <input type="text" name="firstname" placeholder="First Name" /> <br>
         <input type="text" name="lastname" placeholder="Last Name" /> <br>
@@ -31,6 +35,9 @@
         <input type="text" name="password" placeholder="Password: at least 5 characters" /><br>
         <input type="submit" id="button" value="Sign Up" />
     </form>
-    <p><a href="/login">Already a user? Login</a></p>
+    <a href="login.html">    
+        <p class="font-logo">Already a user? Login</p>
+    </a>
+    <h2>{{error}}</h1>
 </body>
 </html>
