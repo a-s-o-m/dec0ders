@@ -135,6 +135,9 @@ def get_dir(path):
 @app.route('/new-companion', methods = ['GET', 'POST'])
 def new_comp():
     companions = mongo.db.companions
+    print("im here you fool")
+    for companion in companions.find({}):
+        print(companion)
     if request.method == "GET":
         #render the form, with the companion list to populate the dropdown menu
         return render_template('new-companion.html', companions = companions)
@@ -148,9 +151,13 @@ def new_comp():
         gender = request.form['gender']
         pic = request.form['pic']
         description = request.form['description']
-                
 
-        companions = mongo.db.library
+        if session:
+            user = session['username']
+        else:
+            user = None     
+
+        companions = mongo.db.companions
         
         #insert an entry to the database using the variables declared above
         companions.insert_one({"name":name, "age":age, "height":height, "type": type, "animal": animal, "gender": gender, "pic": pic, "description": description})
